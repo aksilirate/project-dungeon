@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3hho37n31nkx"]
+[gd_scene load_steps=6 format=3 uid="uid://d3hho37n31nkx"]
 
 [ext_resource type="Script" path="res://scenes/entities/local_player/local_player.gd" id="1_n7sfx"]
+[ext_resource type="ArrayMesh" uid="uid://dqatpefhpcejq" path="res://sword.obj" id="2_wf343"]
+[ext_resource type="Texture2D" uid="uid://clki5xlvrkxnm" path="res://sword.png" id="3_w8na4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5udik"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybdsx"]
+albedo_texture = ExtResource("3_w8na4")
+texture_filter = 0
 
 [node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("camera_target_pos", "camera")]
 script = ExtResource("1_n7sfx")
@@ -21,6 +27,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 top_level = true
 current = true
 near = 0.001
+
+[node name="Sword" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.987173, -0.159657, 0, 0.159657, 0.987173, 0, 0, 0, 1, 0.846035, -0.804305, -0.855906)
+mesh = ExtResource("2_wf343")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ybdsx")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
