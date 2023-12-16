@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3gkrp8gigsvb"]
+[gd_scene load_steps=12 format=3 uid="uid://d3gkrp8gigsvb"]
 
-[ext_resource type="ArrayMesh" uid="uid://bk4gy4x3f8tlb" path="res://sword_mesh.res" id="1_pfo1r"]
+[ext_resource type="ArrayMesh" uid="uid://dqatpefhpcejq" path="res://sword.obj" id="1_ytrda"]
 [ext_resource type="Texture2D" uid="uid://clki5xlvrkxnm" path="res://sword.png" id="2_khi4d"]
 [ext_resource type="Script" path="res://SwordMesh.gd" id="3_j5d0v"]
+[ext_resource type="PackedScene" uid="uid://cfb2y4py5wugl" path="res://scenes/environment/rooms/dungeon_room_0/dungeon_room_0.tscn" id="4_a2k6l"]
+[ext_resource type="PackedScene" uid="uid://d3hho37n31nkx" path="res://scenes/entities/local_player/local_player.tscn" id="5_5mdaj"]
 
 [sub_resource type="Shader" id="Shader_8y1lk"]
 code = "shader_type canvas_item;
@@ -95,12 +97,19 @@ sky_material = SubResource("ProceduralSkyMaterial_82qex")
 [sub_resource type="Environment" id="Environment_3emum"]
 sky = SubResource("Sky_fx22j")
 reflected_light_source = 1
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0, 0.545098, 0.494118, 1)
+fog_light_energy = 0.15
+fog_density = 0.03
+fog_sky_affect = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jcy6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k64jg"]
 albedo_texture = ExtResource("2_khi4d")
 texture_filter = 0
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, -3.60235, 4.04595, -1.65869)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_ymkvj")
@@ -113,6 +122,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
@@ -123,12 +133,18 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_3emum")
 
-[node name="SwordMesh" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.918604, 2.1396, -0.379382)
-mesh = ExtResource("1_pfo1r")
+[node name="Sword" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000612378, 1.9855, -0.855906)
+mesh = ExtResource("1_ytrda")
 skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4jcy6")
+surface_material_override/0 = SubResource("StandardMaterial3D_k64jg")
 script = ExtResource("3_j5d0v")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.83078, 2.63633, -0.884388)
+[node name="DungeonRoom0" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_a2k6l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1)
+
+[node name="DungeonRoom1" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_a2k6l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -1)
+
+[node name="LocalPlayer" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_5mdaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.791486, 1.28334)

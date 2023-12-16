@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfb2y4py5wugl"]
+
+[ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/dungeon_wall/dungeon_wall.tscn" id="1_nh3j4"]
+
+[node name="DungeonRoom0" type="Node3D"]
+
+[node name="DungeonWall" parent="." instance=ExtResource("1_nh3j4")]
+
+[node name="DungeonWall5" parent="." instance=ExtResource("1_nh3j4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+
+[node name="DungeonWall2" parent="." instance=ExtResource("1_nh3j4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -3)
+
+[node name="DungeonWall3" parent="." instance=ExtResource("1_nh3j4")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 3.5, 0)
+
+[node name="DungeonWall4" parent="." instance=ExtResource("1_nh3j4")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3, 3.5, 0)
