@@ -30,11 +30,14 @@ near = 0.001
 
 [node name="Sword" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(0.987173, -0.159657, 0, 0.159657, 0.987173, 0, 0, 0, 1, 0.846035, -0.804305, -0.855906)
+visible = false
 mesh = ExtResource("2_wf343")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ybdsx")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-omni_range = 6.0
-omni_attenuation = 0.3
+light_color = Color(0.8, 0.901961, 0.772549, 1)
+light_specular = 0.0
+omni_range = 10.0
+omni_attenuation = 0.5

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project-dungeon"
-run/main_scene="res://node_3d.tscn"
+run/main_scene="res://scenes/services/client.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -46,3 +46,6 @@ move_right={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+scaling_3d/mode=1
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/screen_space_aa=1
