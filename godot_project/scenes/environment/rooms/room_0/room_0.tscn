@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfb2y4py5wugl"]
+[gd_scene load_steps=3 format=3 uid="uid://cfb2y4py5wugl"]
 
+[ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_l16gr"]
 [ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/dungeon_wall/dungeon_wall.tscn" id="1_nh3j4"]
 
-[node name="DungeonRoom0" type="Node3D"]
+[node name="Room0" type="Node3D" node_paths=PackedStringArray("door_markers")]
+script = ExtResource("1_l16gr")
+door_markers = [NodePath("Marker3D")]
 
 [node name="DungeonWall" parent="." instance=ExtResource("1_nh3j4")]
 
@@ -17,3 +20,6 @@ transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -
 
 [node name="DungeonWall4" parent="." instance=ExtResource("1_nh3j4")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3, 3.5, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)

@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name LocalPlayer extends CharacterBody3D
 
 
 @export var camera_target_pos: Node3D

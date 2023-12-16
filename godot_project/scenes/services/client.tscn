@@ -1,9 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://d3gkrp8gigsvb"]
 
-[ext_resource type="PackedScene" uid="uid://cfb2y4py5wugl" path="res://scenes/environment/rooms/dungeon_room_0/dungeon_room_0.tscn" id="1_krv7k"]
-[ext_resource type="PackedScene" uid="uid://d3hho37n31nkx" path="res://scenes/entities/local_player/local_player.tscn" id="2_l3mvv"]
-[ext_resource type="PackedScene" uid="uid://e0yub0jk6xv6" path="res://scenes/environment/dungeon_door/dungeon_door.tscn" id="3_laxny"]
-[ext_resource type="PackedScene" uid="uid://bwqcldj3v5ocl" path="res://scenes/environment/rooms/dungeon_room_1/dungeon_room_1.tscn" id="4_lldjw"]
+[ext_resource type="PackedScene" uid="uid://cfb2y4py5wugl" path="res://scenes/environment/rooms/room_0/room_0.tscn" id="1_krv7k"]
+[ext_resource type="Script" path="res://scenes/services/client.gd" id="1_omvgh"]
+[ext_resource type="PackedScene" uid="uid://bwqcldj3v5ocl" path="res://scenes/environment/rooms/room_1/room_1.tscn" id="4_lldjw"]
 
 [sub_resource type="Shader" id="Shader_8y1lk"]
 code = "shader_type canvas_item;
@@ -107,6 +106,9 @@ shader_parameter/vignette_intensity = 0.3
 shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0.0235294, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cm337"]
+size = Vector3(6, 0.5, 6)
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_82qex"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -121,7 +123,10 @@ fog_light_energy = 0.0
 fog_density = 0.0
 fog_sky_affect = 0.0
 
-[node name="Client" type="Node"]
+[node name="Client" type="Node" node_paths=PackedStringArray("world")]
+script = ExtResource("1_omvgh")
+world = NodePath("CanvasLayer/SubViewportContainer/SubViewport/WorldSpace")
+rooms = Array[PackedScene]([ExtResource("1_krv7k"), ExtResource("4_lldjw")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -141,31 +146,14 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_mode = 0
+[node name="WorldSpace" type="Node3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CanvasLayer/SubViewportContainer/SubViewport/WorldSpace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+shape = SubResource("BoxShape3D_cm337")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_3emum")
-
-[node name="DungeonRoom0" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_krv7k")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1)
-
-[node name="LocalPlayer" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("2_l3mvv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.791486, 1.28334)
-
-[node name="DungeonDoor" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("3_laxny")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.5, -1)
-
-[node name="DungeonRoom1" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_lldjw")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -1)
-
-[node name="DungeonRoom2" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_lldjw")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0, -1)
-
-[node name="DungeonRoom3" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_krv7k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, -1)
 
 [node name="CanvasGroup" type="CanvasGroup" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_ymkvj")
