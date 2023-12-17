@@ -10,13 +10,13 @@ door_markers = [NodePath("Marker3D2"), NodePath("Marker3D")]
 [node name="DungeonWall" parent="." instance=ExtResource("1_0exm7")]
 
 [node name="DungeonWall5" parent="." instance=ExtResource("1_0exm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 7, 0)
 
 [node name="DungeonWall3" parent="." instance=ExtResource("1_0exm7")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 3.5, 0)
 
 [node name="DungeonWall4" parent="." instance=ExtResource("1_0exm7")]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3, 3.5, 0)
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -3.5, 3.5, 0)
 
 [node name="Marker3D2" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)

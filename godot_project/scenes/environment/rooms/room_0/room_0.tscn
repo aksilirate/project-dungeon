@@ -1,25 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfb2y4py5wugl"]
+[gd_scene load_steps=6 format=3 uid="uid://cfb2y4py5wugl"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_l16gr"]
 [ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/dungeon_wall/dungeon_wall.tscn" id="1_nh3j4"]
 
-[node name="Room0" type="Node3D" node_paths=PackedStringArray("door_markers")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3naxa"]
+size = Vector3(6, 12, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eottk"]
+size = Vector3(0.5, 12, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7psnx"]
+size = Vector3(6, 0.5, 6)
+
+[node name="Room0" type="Node3D" node_paths=PackedStringArray("door_markers", "collision")]
 script = ExtResource("1_l16gr")
 door_markers = [NodePath("Marker3D")]
-
-[node name="DungeonWall" parent="." instance=ExtResource("1_nh3j4")]
-
-[node name="DungeonWall5" parent="." instance=ExtResource("1_nh3j4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+collision = NodePath("CollisionShape3D")
 
 [node name="DungeonWall2" parent="." instance=ExtResource("1_nh3j4")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -3.5)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -0.25)
 
 [node name="DungeonWall3" parent="." instance=ExtResource("1_nh3j4")]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 3.5, 0)
-
-[node name="DungeonWall4" parent="." instance=ExtResource("1_nh3j4")]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3, 3.5, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.5, -0.25)
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
+visible = false
+shape = SubResource("BoxShape3D_3naxa")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0)
+visible = false
+shape = SubResource("BoxShape3D_eottk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+visible = false
+shape = SubResource("BoxShape3D_7psnx")
