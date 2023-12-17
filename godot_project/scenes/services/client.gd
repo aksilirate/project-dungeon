@@ -25,7 +25,7 @@ func setup_spawn() -> void:
 	
 	world.add_child(local_player)
 	
-	local_player.global_position = spawn_room.spawn_marker.global_position
+	local_player.global_position = spawn_room.spawn_marker.global_position + Vector3(0, 2, 0)
 	
 	
 	for room in spawned_rooms:
