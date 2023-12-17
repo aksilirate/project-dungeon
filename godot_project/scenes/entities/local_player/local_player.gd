@@ -1,6 +1,6 @@
-class_name LocalPlayer extends CharacterBody3D
+class_name LocalPlayer extends RigidBody3D
 
-
+@export var floor_raycast: RayCast3D
 @export var camera_target_pos: Node3D
 @export var camera: Camera3D
 
@@ -26,13 +26,24 @@ func _unhandled_input(event):
 
 
 func _process(delta: float) -> void:
-	camera.global_position = lerp(camera.global_position, camera_target_pos.global_position, delta * 17.5)
+	var offset: Vector3 = Vector3(0, 0, 0)
+	camera.global_position = lerp(camera.global_position, camera_target_pos.global_position + offset, delta * 17.5)
+	floor_raycast.global_position = global_position
 
 
-func _physics_process(delta: float) -> void:
-	velocity = get_move_dir() * 4.5
-	move_and_slide()
 
+
+
+func _integrate_forces(_state: PhysicsDirectBodyState3D) -> void:
+	if floor_raycast.is_colliding():
+		var distance: float = floor_raycast.global_position.distance_to(floor_raycast.get_collision_point())
+		distance = abs(floor_raycast.target_position.y) - distance
+		distance = clamp(distance, 0, abs(floor_raycast.target_position.y))
+		linear_velocity.y = distance * 15
+	
+	var velocity = get_move_dir() * 3.5
+	linear_velocity.x = velocity.x
+	linear_velocity.z = velocity.z
 
 
 

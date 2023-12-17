@@ -1,27 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3hho37n31nkx"]
+[gd_scene load_steps=6 format=3 uid="uid://d3hho37n31nkx"]
 
 [ext_resource type="Script" path="res://scenes/entities/local_player/local_player.gd" id="1_n7sfx"]
+[ext_resource type="PackedScene" uid="uid://bvsfst40mxgrb" path="res://assests/armatures/human.fbx" id="2_qkv5v"]
 [ext_resource type="ArrayMesh" uid="uid://dqatpefhpcejq" path="res://assests/models/sword.obj" id="2_wf343"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5udik"]
+[sub_resource type="BoxMesh" id="BoxMesh_mdxue"]
+size = Vector3(0.25, 0.25, 0.25)
 
-[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("camera_target_pos", "camera")]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yhvj3"]
+points = PackedVector3Array(0.125, 0.125, 0.125, 0.125, 0.125, -0.125, -0.125, 0.125, 0.125, 0.125, -0.125, 0.125, 0.125, -0.125, -0.125, -0.125, 0.125, -0.125, -0.125, -0.125, 0.125, -0.125, -0.125, -0.125)
+
+[node name="LocalPlayer" type="RigidBody3D" node_paths=PackedStringArray("floor_raycast", "camera_target_pos", "camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+continuous_cd = true
 script = ExtResource("1_n7sfx")
+floor_raycast = NodePath("RayCast3D")
 camera_target_pos = NodePath("CameraTargetPos")
 camera = NodePath("Camera3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Root Scene" parent="." instance=ExtResource("2_qkv5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_5udik")
+
+[node name="Skeleton3D" parent="Root Scene/RootNode/Armature" index="0"]
+bones/0/rotation = Quaternion(0.785905, 4.16054e-23, 3.27351e-23, 0.618348)
+bones/1/rotation = Quaternion(-0.156075, -2.61454e-23, -4.13126e-24, 0.987745)
+bones/2/rotation = Quaternion(-0.0828957, 1.18799e-07, -9.88193e-09, 0.996558)
+bones/3/rotation = Quaternion(0.120652, 4.80909e-15, 2.87658e-08, 0.992695)
+bones/4/rotation = Quaternion(0.083348, 3.78794e-15, 1.98717e-08, 0.99652)
+bones/6/rotation = Quaternion(-0.0264002, -0.117729, 0.96864, -0.217207)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(1.94219e-07, -3.12089e-07, -0.184292, 0.982872)
+bones/10/rotation = Quaternion(0.0264002, -0.117729, 0.96864, 0.217207)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(1.98369e-07, 3.49562e-07, 0.184292, 0.982872)
+bones/12/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.00515164, 0.14993, 0.98755, -0.0473158)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.0588436, 0.000234696, -0.011297, 0.998203)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.1911, 0.623766, 0.635601, 0.412805)
+bones/16/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.00515164, 0.14993, 0.98755, 0.0473158)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.0588436, -0.000234696, 0.011297, 0.998203)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.1911, 0.623766, 0.635601, -0.412805)
+bones/20/scale = Vector3(1, 1, 1)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+top_level = true
+target_position = Vector3(0, -2, 0)
+
+[node name="HeadMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_mdxue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("ConvexPolygonShape3D_yhvj3")
 
 [node name="CameraTargetPos" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 top_level = true
 current = true
 near = 0.001
+
+[node name="Attachment" type="StaticBody3D" parent="Camera3D"]
 
 [node name="Sword" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(0.987173, -0.159657, 0, 0.159657, 0.987173, 0, 0, 0, 1, 0.846035, -0.804305, -0.855906)
@@ -30,8 +76,10 @@ mesh = ExtResource("2_wf343")
 skeleton = NodePath("../../../..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 light_color = Color(0.898039, 0.952941, 0.886275, 1)
 light_specular = 0.0
 omni_range = 10.0
 omni_attenuation = 0.5
+
+[editable path="Root Scene"]

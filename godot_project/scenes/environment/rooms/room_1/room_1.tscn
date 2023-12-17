@@ -1,21 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://djfsgff37rlo4"]
 
-[ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/dungeon_wall/dungeon_wall.tscn" id="1_0exm7"]
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_d1lqa"]
+[ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/parts/dungeon_wall/dungeon_wall.tscn" id="2_wnl3a"]
 
 [node name="Room1" type="Node3D" node_paths=PackedStringArray("door_markers")]
 script = ExtResource("1_d1lqa")
 door_markers = [NodePath("Marker3D2"), NodePath("Marker3D")]
 
-[node name="DungeonWall" parent="." instance=ExtResource("1_0exm7")]
+[node name="DungeonWall" parent="." instance=ExtResource("2_wnl3a")]
 
-[node name="DungeonWall5" parent="." instance=ExtResource("1_0exm7")]
+[node name="DungeonWall5" parent="." instance=ExtResource("2_wnl3a")]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 7, 0)
 
-[node name="DungeonWall3" parent="." instance=ExtResource("1_0exm7")]
+[node name="DungeonWall3" parent="." instance=ExtResource("2_wnl3a")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 3.5, 0)
 
-[node name="DungeonWall4" parent="." instance=ExtResource("1_0exm7")]
+[node name="DungeonWall4" parent="." instance=ExtResource("2_wnl3a")]
 transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -3.5, 3.5, 0)
 
 [node name="Marker3D2" type="Marker3D" parent="."]

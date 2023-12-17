@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpcggg2piql8g"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_l16gr"]
-[ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/dungeon_wall/dungeon_wall.tscn" id="1_nh3j4"]
+[ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/parts/dungeon_wall/dungeon_wall.tscn" id="2_uypud"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2xiwy"]
 size = Vector3(6, 2, 0.5)
@@ -10,7 +10,7 @@ size = Vector3(6, 2, 0.5)
 script = ExtResource("1_l16gr")
 door_markers = [NodePath("Marker3D")]
 
-[node name="DungeonWall2" parent="." instance=ExtResource("1_nh3j4")]
+[node name="DungeonWall2" parent="." instance=ExtResource("2_uypud")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -0.25)
 
 [node name="DungeonWall" parent="DungeonWall2" index="2"]
