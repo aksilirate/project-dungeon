@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3gkrp8gigsvb"]
+[gd_scene load_steps=12 format=3 uid="uid://d3gkrp8gigsvb"]
 
-[ext_resource type="PackedScene" uid="uid://cfb2y4py5wugl" path="res://scenes/environment/rooms/room_0/room_0.tscn" id="1_krv7k"]
+[ext_resource type="PackedScene" uid="uid://bpcggg2piql8g" path="res://scenes/environment/rooms/room_0/room_0.tscn" id="1_krv7k"]
 [ext_resource type="Script" path="res://scenes/services/client.gd" id="1_omvgh"]
+[ext_resource type="PackedScene" uid="uid://dd0sjap5e4w7u" path="res://scenes/environment/rooms/room_2/room_2.tscn" id="3_60fet"]
+[ext_resource type="PackedScene" uid="uid://djfsgff37rlo4" path="res://scenes/environment/rooms/room_1/room_1.tscn" id="3_hqdk1"]
+[ext_resource type="PackedScene" uid="uid://dhgkkf5e8xsh6" path="res://scenes/environment/rooms/room_3/room_3.tscn" id="5_oc7p4"]
 
 [sub_resource type="Shader" id="Shader_8y1lk"]
 code = "shader_type canvas_item;
@@ -125,7 +128,7 @@ fog_sky_affect = 0.0
 [node name="Client" type="Node" node_paths=PackedStringArray("world")]
 script = ExtResource("1_omvgh")
 world = NodePath("CanvasLayer/SubViewportContainer/SubViewport/WorldSpace")
-rooms = Array[PackedScene]([ExtResource("1_krv7k")])
+rooms = Array[PackedScene]([ExtResource("3_hqdk1"), ExtResource("3_60fet"), ExtResource("1_krv7k"), ExtResource("5_oc7p4")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -153,6 +156,3 @@ shape = SubResource("BoxShape3D_cm337")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_3emum")
-
-[node name="CanvasGroup" type="CanvasGroup" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_ymkvj")

@@ -1,42 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfb2y4py5wugl"]
+[gd_scene load_steps=4 format=3 uid="uid://bpcggg2piql8g"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_l16gr"]
 [ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/dungeon_wall/dungeon_wall.tscn" id="1_nh3j4"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3naxa"]
-size = Vector3(6, 12, 0.5)
+[sub_resource type="BoxMesh" id="BoxMesh_2xiwy"]
+size = Vector3(6, 2, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eottk"]
-size = Vector3(0.5, 12, 6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7psnx"]
-size = Vector3(6, 0.5, 6)
-
-[node name="Room0" type="Node3D" node_paths=PackedStringArray("door_markers", "collision")]
+[node name="Room0" type="Node3D" node_paths=PackedStringArray("door_markers")]
 script = ExtResource("1_l16gr")
 door_markers = [NodePath("Marker3D")]
-collision = NodePath("CollisionShape3D")
 
 [node name="DungeonWall2" parent="." instance=ExtResource("1_nh3j4")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -0.25)
 
-[node name="DungeonWall3" parent="." instance=ExtResource("1_nh3j4")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.5, -0.25)
+[node name="DungeonWall" parent="DungeonWall2" index="2"]
+mesh = null
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
-visible = false
-shape = SubResource("BoxShape3D_3naxa")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_2xiwy")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0)
-visible = false
-shape = SubResource("BoxShape3D_eottk")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-visible = false
-shape = SubResource("BoxShape3D_7psnx")
+[editable path="DungeonWall2"]

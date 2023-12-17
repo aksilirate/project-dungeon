@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkq5gm4ats465"
+path="res://.godot/imported/wall_collision.obj-b1cc711d67e3a0e91af6c6c004e3c1ea.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall_collision.obj-b1cc711d67e3a0e91af6c6c004e3c1ea.mesh"]
+
+source_file="res://assests/models/wall_collision.obj"
+dest_files=["res://.godot/imported/wall_collision.obj-b1cc711d67e3a0e91af6c6c004e3c1ea.mesh", "res://.godot/imported/wall_collision.obj-b1cc711d67e3a0e91af6c6c004e3c1ea.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

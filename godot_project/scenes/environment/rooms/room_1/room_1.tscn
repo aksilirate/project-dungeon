@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwqcldj3v5ocl"]
+[gd_scene load_steps=3 format=3 uid="uid://djfsgff37rlo4"]
 
 [ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/dungeon_wall/dungeon_wall.tscn" id="1_0exm7"]
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_d1lqa"]

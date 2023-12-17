@@ -36,9 +36,14 @@ func setup_spawn() -> void:
 			var new_room: Room = rooms.pick_random().instantiate() as Room
 			world.add_child(new_room)
 			
+			var failed: bool = true
 			for new_room_door_marker in new_room.door_markers:
-				if await connect_rooms(room, door_marker, new_room, new_room_door_marker):
+				if connect_rooms(door_marker, new_room, new_room_door_marker):
+					failed = false
 					break
+			
+			if failed:
+				new_room.queue_free()
 
 
 
@@ -48,7 +53,7 @@ func save_room(room: Room) -> void:
 
 
 
-func connect_rooms(base_room: Room, base_marker: Marker3D, connected_room: Room, connected_marker: Marker3D) -> bool:
+func connect_rooms(base_marker: Marker3D, connected_room: Room, connected_marker: Marker3D) -> bool:
 	used_door_markers.push_back(connected_marker)
 	used_door_markers.push_back(base_marker)
 	
@@ -57,23 +62,16 @@ func connect_rooms(base_room: Room, base_marker: Marker3D, connected_room: Room,
 	
 	var tries: int = 0
 	while aabb_intersects(connected_room.get_aabb()):
-		await get_tree().create_timer(1.0).timeout
-		#print(connected_room.get_aabb())
 		tries += 1
-		
 		connected_room.rotation_degrees.y += 90
 		difference = base_marker.global_position - connected_marker.global_position
 		connected_room.global_position += difference
 		
-		
-		if tries >= 10:
+		if tries >= 4:
 			used_door_markers.erase(connected_marker)
 			used_door_markers.erase(base_marker)
-			connected_room.queue_free()
-			print("fuck")
 			return false
 	
-	print("YES: ", connected_room.get_aabb(), base_room.get_aabb())
 	save_room(connected_room)
 	
 	return true
@@ -83,8 +81,6 @@ func connect_rooms(base_room: Room, base_marker: Marker3D, connected_room: Room,
 func aabb_intersects(room_aabb: AABB) -> bool:
 	for aabb in room_aabbs:
 		if room_aabb.intersects(aabb):
-			
-			print(room_aabb, ":", aabb)
 			return true
 	
 	return false
