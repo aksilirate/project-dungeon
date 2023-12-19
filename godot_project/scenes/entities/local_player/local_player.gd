@@ -1,24 +1,11 @@
 class_name LocalPlayer extends CharacterBody3D
 
-#
-#@export var main_skeleton: Skeleton3D
-#@export var target_skeleton: Skeleton3D
-#
-#@export var right_hand_bone: PhysicalBone3D
-#@export var head_bone: PhysicalBone3D
-#@export var root_bone: PhysicalBone3D
-#
-#@export var floor_raycast: RayCast3D
+
+
+@export var floor_raycast: RayCast3D
+@export var camera_target: Marker3D
 @export var camera: Camera3D
-#@export var joints: Node3D
-#
-#
-#@onready var main_bones: Array[PhysicalBone3D] = get_bones(main_skeleton)
-#@onready var target_bones: Array[PhysicalBone3D] = get_bones(target_skeleton)
-#
-#@export var sword: RigidBody3D
-#
-#var camera_offset: Vector3 = Vector3(0, 0.45, 0)
+
 var look_sensitivity: float = 0.1
 
 
@@ -39,7 +26,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	camera.global_position = lerp(camera.global_position, global_position, delta * 17.5)
+	camera.global_position = lerp(camera.global_position, camera_target.global_position, delta * 17.5)
 	camera.rotation_degrees.y = rotation_degrees.y
 
 
@@ -49,149 +36,60 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = get_move_dir() * 2.5
-	move_and_slide()
-
-
-
-
-
-#
-#
-#
-#func init_ik() -> void:
-	#for child in main_skeleton.get_children():
-		#if child is SkeletonIK3D:
-			#child.start()
-#
-#
-#
-#func create_joints() -> void:
-	#for idx in main_bones.size():
-		#var main_bone: PhysicalBone3D = main_bones[idx]
-		#var target_bone: PhysicalBone3D = target_bones[idx]
-		#create_spring_joint(main_bone.get_path(), target_bone.get_path())
-#
-#
-#
-#
-#func create_pin_joint(node_a: NodePath, node_b: NodePath) -> void:
-	#var pin_joint = JoltPinJoint3D.new()
-	#pin_joint.node_a = node_a
-	#pin_joint.node_b = node_b
-	#get_node(node_b).global_position = get_node(node_a).global_position
-	#get_node(node_a).add_child(pin_joint)
-#
-#
-#
-#func create_spring_joint(node_a: NodePath, node_b: NodePath) -> void:
-	#var generic_6dof_joint = JoltGeneric6DOFJoint3D.new()
-	#generic_6dof_joint.set_flag_x(JoltGeneric6DOFJoint3D.FLAG_ENABLE_LINEAR_LIMIT, false)
-	#generic_6dof_joint.set_flag_y(JoltGeneric6DOFJoint3D.FLAG_ENABLE_LINEAR_LIMIT, false)
-	#generic_6dof_joint.set_flag_z(JoltGeneric6DOFJoint3D.FLAG_ENABLE_LINEAR_LIMIT, false)
-	#generic_6dof_joint.set_flag_x(JoltGeneric6DOFJoint3D.FLAG_ENABLE_ANGULAR_LIMIT, false)
-	#generic_6dof_joint.set_flag_y(JoltGeneric6DOFJoint3D.FLAG_ENABLE_ANGULAR_LIMIT, false)
-	#generic_6dof_joint.set_flag_z(JoltGeneric6DOFJoint3D.FLAG_ENABLE_ANGULAR_LIMIT, false)
-	#
-	#generic_6dof_joint.set_flag_x(JoltGeneric6DOFJoint3D.FLAG_ENABLE_ANGULAR_SPRING, true)
-	#generic_6dof_joint.set_flag_y(JoltGeneric6DOFJoint3D.FLAG_ENABLE_ANGULAR_SPRING, true)
-	#generic_6dof_joint.set_flag_z(JoltGeneric6DOFJoint3D.FLAG_ENABLE_ANGULAR_SPRING, true)
-	#
-	#generic_6dof_joint.set_param_x(JoltGeneric6DOFJoint3D.PARAM_ANGULAR_SPRING_FREQUENCY, 45)
-	#generic_6dof_joint.set_param_y(JoltGeneric6DOFJoint3D.PARAM_ANGULAR_SPRING_FREQUENCY, 45)
-	#generic_6dof_joint.set_param_z(JoltGeneric6DOFJoint3D.PARAM_ANGULAR_SPRING_FREQUENCY, 45)
-	#
-	#generic_6dof_joint.set_param_x(JoltGeneric6DOFJoint3D.PARAM_ANGULAR_SPRING_DAMPING, 25)
-	#generic_6dof_joint.set_param_y(JoltGeneric6DOFJoint3D.PARAM_ANGULAR_SPRING_FREQUENCY, 25)
-	#generic_6dof_joint.set_param_z(JoltGeneric6DOFJoint3D.PARAM_ANGULAR_SPRING_FREQUENCY, 25)
-	#
-	#generic_6dof_joint.node_a = node_a
-	#generic_6dof_joint.node_b = node_b
-	#joints.add_child(generic_6dof_joint)
-#
-#
-#
-#func get_bones(skeleton: Skeleton3D) -> Array[PhysicalBone3D]:
-	#var main_bones: Array[PhysicalBone3D] = []
-	#
-	#for child in skeleton.get_children():
-		#if child is PhysicalBone3D:
-			#main_bones.push_back(child)
-	#
-	#return main_bones
-
-
-
-
-
-
-
-
-
-
-#@export var follow_skeleton: Skeleton3D
-#@export var ik_nodes: Array[SkeletonIK3D]
-#@export var floor_raycast: RayCast3D
-#@export var camera_target_pos: Node3D
-#@export var camera: Camera3D
-#
-#
-#
-#const SPEED = 5.0
-#const JUMP_VELOCITY = 4.5
-#
-## Get the gravity from the project settings to be synced with RigidBody nodes.
-#var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-#var look_sensitivity: float = 0.1
-#
-#
-#
-#func _ready() -> void:
-	#
-	#follow_skeleton.physical_bones_start_simulation()
-	#for ik_node in ik_nodes:
-		#ik_node.start()
-#
-#
-#func _unhandled_input(event):
-	#if event is InputEventMouseMotion:
-		#camera.rotation_degrees.y -= event.relative.x * look_sensitivity
-
-#
-#
-#func _process(delta: float) -> void:
-	#
-	#
-	#floor_raycast.global_position = global_position
-#
-#
-#
-#
-#
-#func _integrate_forces(_state: PhysicsDirectBodyState3D) -> void:
-	#if floor_raycast.is_colliding():
-		#var distance: float = floor_raycast.global_position.distance_to(floor_raycast.get_collision_point())
-		#distance = abs(floor_raycast.target_position.y) - distance
-		#distance = clamp(distance, 0, abs(floor_raycast.target_position.y))
-		#linear_velocity.y = distance * 15
-	#
-	#var velocity = get_move_dir() * 3.5
-	#linear_velocity.x = velocity.x
-	#linear_velocity.z = velocity.z
-
-
-
-
-
-func get_move_dir() -> Vector3:
 	var input_dir: Vector3 = get_input_dir()
+	velocity = get_move_force(input_dir)
+	velocity = get_gravity()
 	
+	if input_dir.y:
+		velocity.y = 10
+	
+	move_and_slide()
+	
+	velocity = get_pull_force(input_dir, delta)
+
+
+
+
+
+
+
+func get_move_force(input_dir: Vector3) -> Vector3:
 	var input_vector: Vector2 = Vector2(input_dir.z, input_dir.x)
-	var horizontal_move_dir: Vector2 = input_vector.rotated(-deg_to_rad(rotation_degrees.y))
+	var horizontal_input: Vector2 = input_vector.rotated(-deg_to_rad(rotation_degrees.y))
+	var move_force = Vector3(horizontal_input.x, velocity.y, horizontal_input.y)
 	
-	var move_dir: Vector3 = Vector3(horizontal_move_dir.x, 0, horizontal_move_dir.y)
+	if floor_raycast.is_colliding():
+		var normal: Vector3 = floor_raycast.get_collision_normal()
+		move_force = normal.cross(Vector3.FORWARD.rotated(Vector3.UP, global_rotation.y - (PI / 2)))
+		move_force = move_force.rotated(normal, input_vector.angle_to(Vector2.UP))
+		move_force *= 10.5 * input_vector.length()
+		return move_force
 	
-	return move_dir
+	
+	return velocity
+
+
+
+func get_gravity() -> Vector3:
+	if not floor_raycast.is_colliding():
+		return Vector3(velocity.x, velocity.y - 1, velocity.z)
+	
+	return Vector3(velocity.x, 0, velocity.z)
+
+
+
+func get_pull_force(input_dir: Vector3, delta: float) -> Vector3:
+	if input_dir.y:
+		return velocity
+	
+	if floor_raycast.is_colliding():
+		var pull_strength: float = floor_raycast.target_position.y + floor_raycast.global_position.distance_to(floor_raycast.get_collision_point())
+		var pull_force: Vector3 = Vector3(velocity.x, -pull_strength / delta, velocity.z)
+		return pull_force
+	
+	return velocity
+
+
 
 
 
@@ -199,5 +97,4 @@ func get_input_dir() -> Vector3:
 	var horizontal_input: Vector2 = Vector2.ZERO
 	horizontal_input.x = Input.get_action_strength("move_backwards") - Input.get_action_strength("move_forward")
 	horizontal_input.y = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	var input_dir: Vector3 = Vector3(horizontal_input.x, 0, horizontal_input.y)
-	return input_dir
+	return Vector3(horizontal_input.x, Input.is_action_just_pressed("jump"), horizontal_input.y)

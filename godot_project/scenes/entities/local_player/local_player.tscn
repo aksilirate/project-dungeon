@@ -3,13 +3,23 @@
 [ext_resource type="Script" path="res://scenes/entities/local_player/local_player.gd" id="1_n7sfx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5tus"]
+height = 1.30982
 
-[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("floor_raycast", "camera_target", "camera")]
 script = ExtResource("1_n7sfx")
+floor_raycast = NodePath("FloorRayCast")
+camera_target = NodePath("CameraTarget")
 camera = NodePath("Camera3D")
 
+[node name="CameraTarget" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="FloorRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+target_position = Vector3(0, -2, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33792, 0)
 shape = SubResource("CapsuleShape3D_o5tus")
 
 [node name="Camera3D" type="Camera3D" parent="."]
