@@ -7,12 +7,11 @@ class_name LocalPlayer extends CharacterBody3D
 @export var camera: Camera3D
 
 var look_sensitivity: float = 0.1
-
+var movement_speed: float = 4.5
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 
 
 
@@ -25,12 +24,10 @@ func _input(event: InputEvent) -> void:
 
 
 
+
 func _process(delta: float) -> void:
 	camera.global_position = lerp(camera.global_position, camera_target.global_position, delta * 17.5)
 	camera.rotation_degrees.y = rotation_degrees.y
-
-
-
 
 
 
@@ -50,11 +47,8 @@ func _physics_process(delta: float) -> void:
 
 
 
-
-
-
 func get_move_force(input_dir: Vector3) -> Vector3:
-	var input_vector: Vector2 = Vector2(input_dir.z, input_dir.x)
+	var input_vector: Vector2 = Vector2(input_dir.z, input_dir.x).normalized()
 	var horizontal_input: Vector2 = input_vector.rotated(-deg_to_rad(rotation_degrees.y))
 	var move_force = Vector3(horizontal_input.x, velocity.y, horizontal_input.y)
 	
@@ -62,11 +56,12 @@ func get_move_force(input_dir: Vector3) -> Vector3:
 		var normal: Vector3 = floor_raycast.get_collision_normal()
 		move_force = normal.cross(Vector3.FORWARD.rotated(Vector3.UP, global_rotation.y - (PI / 2)))
 		move_force = move_force.rotated(normal, input_vector.angle_to(Vector2.UP))
-		move_force *= 10.5 * input_vector.length()
+		move_force *= movement_speed * input_vector.length()
 		return move_force
 	
 	
 	return velocity
+
 
 
 
@@ -75,6 +70,7 @@ func get_gravity() -> Vector3:
 		return Vector3(velocity.x, velocity.y - 1, velocity.z)
 	
 	return Vector3(velocity.x, 0, velocity.z)
+
 
 
 
@@ -88,7 +84,6 @@ func get_pull_force(input_dir: Vector3, delta: float) -> Vector3:
 		return pull_force
 	
 	return velocity
-
 
 
 

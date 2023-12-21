@@ -8,16 +8,18 @@ script = ExtResource("1_bqr10")
 target_point = NodePath("TargetPoint")
 
 [node name="Limb" parent="." instance=ExtResource("1_jnabd")]
-transform = Transform3D(0.98451, -0.175331, 0, 0.175331, 0.98451, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.939262, -0.343174, -0.00421363, 0.343174, 0.93897, 0.0238074, -0.00421363, -0.0238074, 0.999708, 0, 0, 0)
 
 [node name="Limb2" parent="." instance=ExtResource("1_jnabd")]
-transform = Transform3D(0.863145, -0.504956, 0, 0.504956, 0.863145, 0, 0, 0, 1, -0.14719, 0.826493, 0)
+transform = Transform3D(-0.134288, -0.990477, -0.0303788, 0.990477, -0.135102, 0.0265272, -0.0303788, -0.0265272, 0.999186, -0.288094, 0.788262, -0.0199863)
 
 [node name="Limb3" parent="." instance=ExtResource("1_jnabd")]
-transform = Transform3D(0.405999, -0.913873, 0, 0.913873, 0.405999, 0, 0, 0, 1, -0.571099, 1.5511, 0)
 
-[node name="Limb4" parent="." instance=ExtResource("1_jnabd")]
-transform = Transform3D(0.00968914, -0.999953, 0, 0.999953, 0.00968914, 0, 0, 0, 1, -1.33829, 1.89194, 0)
+[node name="Limb4" parent="." node_paths=PackedStringArray("end_segment") instance=ExtResource("1_jnabd")]
+end_segment = NodePath("../Limb3/Marker3D")
+
+[node name="Limb5" parent="." node_paths=PackedStringArray("end_segment") instance=ExtResource("1_jnabd")]
+end_segment = NodePath("../Limb3/Marker3D")
 
 [node name="TargetPoint" type="Marker3D" parent="."]
-transform = Transform3D(0.90697, 2.16918e-09, 0.421194, -0.189283, -0.893332, 0.407589, 0.376266, -0.449397, -0.810225, -2.17775, 1.90007, -0.617186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1196, 0.674845, -0.0422558)

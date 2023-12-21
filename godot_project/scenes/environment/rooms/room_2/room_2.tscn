@@ -22,4 +22,4 @@ transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91068e-15, -3.5, 3.5, 0)
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0149965, 0.499999, 2.99963)

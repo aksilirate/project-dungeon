@@ -14,41 +14,33 @@ class_name Appendage extends Node3D
 
 
 func _process(delta: float) -> void:
-	for idx in limbs.size():
-		var limb: Limb = limbs[idx]
-		
-		if idx:
-			var last_limb: Limb = limbs[idx - 1]
-			limb.global_position = last_limb.end_segment.global_position
-			continue
-		
-		limb.global_position = global_position
-	
+	reset_pos()
 	
 	if get_max_length() < global_position.distance_to(target_point.global_position):
 		for idx in limbs.size():
 			var limb: Limb = limbs[idx]
-			await rotate_limb(limb, target_point.global_position, false)
-		return
-	
-	var last_transforms: Array[Transform3D] = get_limb_transforms()
-	
+			rotate_limb(limb, target_point.global_position, true)
+			if not idx:
+				continue
+			var last_limb: Limb = limbs[idx - 1]
+			limb.global_position = last_limb.end_segment.global_position
 	
 	
 	for i in 10:
 		var distance: float = get_distance_to_target()
 		
 		for idx in range(limbs.size() - 1, -1, -1):
-				var limb: Limb = limbs[idx]
-				
-				if not idx == limbs.size() - 1:
-					var last_limb: Limb = limbs[idx + 1]
-					rotate_limb(limb, last_limb.global_position, false)
-					limb.global_position = last_limb.global_position - (limb.end_segment.global_position - limb.global_position)
-					continue
-				
-				rotate_limb(limb, target_point.global_position, false)
-				limb.global_position = target_point.global_position - (limb.end_segment.global_position - limb.global_position)
+			var limb: Limb = limbs[idx]
+			
+			if not idx == limbs.size() - 1:
+				var last_limb: Limb = limbs[idx + 1]
+				rotate_limb(limb, last_limb.global_position, true)
+				limb.global_position = last_limb.global_position - (limb.end_segment.global_position - limb.global_position)
+				continue
+			
+			rotate_limb(limb, target_point.global_position, true)
+			limb.global_position = target_point.global_position - (limb.end_segment.global_position - limb.global_position)
+		
 		
 		
 		for idx in limbs.size():
@@ -56,22 +48,32 @@ func _process(delta: float) -> void:
 			
 			if idx:
 				var last_limb: Limb = limbs[idx - 1]
-				rotate_limb(limb, last_limb.end_segment.global_position, true)
+				rotate_limb(limb, last_limb.end_segment.global_position, false)
 				limb.global_position = last_limb.end_segment.global_position
 				continue
 			
-			rotate_limb(limb, global_position, true)
+			rotate_limb(limb, global_position, false)
 			limb.global_position = global_position
 		
 		
-		if abs(distance - get_distance_to_target()) > 0.4:
-			return
+		#if abs(distance - get_distance_to_target()) > 0.4:
 			#for idx in limbs.size():
-				#limbs[idx].global_transform = last_transforms[idx]
-		
-		last_transforms = get_limb_transforms()
+				#reset_pos()
+			#return
+
 		distance = get_distance_to_target()
 
+
+func reset_pos() -> void:
+	for idx in limbs.size():
+		var limb: Limb = limbs[idx]
+		
+		if not idx:
+			limb.global_position = global_position
+			continue
+			
+		var last_limb: Limb = limbs[idx - 1]
+		limb.global_position = last_limb.end_segment.global_position
 
 
 
@@ -81,28 +83,59 @@ func rotate_limb(limb: Limb, look_pos: Vector3, inverse: bool) -> void:
 	var look_vector: Vector3 = limb.get_look_vector()
 	var idx: int = limbs.find(limb)
 	
-	if inverse:
+	if not inverse:
 		direction = limb.end_segment.global_position.direction_to(look_pos)
 		look_vector = -look_vector
 	
 	var axis: Vector3 = direction.cross(look_vector).normalized()
 	var angle: float = look_vector.signed_angle_to(direction, axis)
 	
+	if not is_equal_approx(angle, 0.0):
+		limb.global_rotation = Basis(axis, angle).get_euler()
+		#if not idx:
+			#print(limb.global_rotation)
 	
-	if not axis == Vector3.ZERO:
-		var rotation_diff = Quaternion(axis, angle).get_euler() - limb.global_rotation
-		limb.global_rotation += rotation_diff
+	
+	var joint_limb: Limb = null
+	var joint_basis: Basis = global_basis
+	var joint_rot_min: Vector3 = limb.rot_min
+	var joint_rot_max: Vector3 = limb.rot_max
+	
+	
+	if not inverse:
+		joint_limb = limb
 		
-		var clamp_offset: Vector3 = Vector3.ZERO
+		#if not idx:
+			#joint_rot_min = global_basis * joint_rot_min
+			#joint_rot_max = global_basis * joint_rot_max
 		
 		if idx:
 			var last_limb: Limb = limbs[idx - 1]
-			clamp_offset = last_limb.global_rotation_degrees
+			joint_limb = last_limb
+			
+			joint_rot_min += joint_limb.global_rotation_degrees
+			joint_rot_max += joint_limb.global_rotation_degrees
+			
+			#print(joint_rot_min)
 		
-		var x_clamp: float = clamp(limb.global_rotation_degrees.x, limb.x_rot_min + clamp_offset.x, limb.x_rot_max + clamp_offset.x)
-		var y_clamp: float = clamp(limb.global_rotation_degrees.y, limb.y_rot_min + clamp_offset.y, limb.y_rot_max + clamp_offset.y)
-		var z_clamp: float = clamp(limb.global_rotation_degrees.z, limb.z_rot_min + clamp_offset.z, limb.z_rot_max + clamp_offset.z)
-		limb.global_rotation_degrees = Vector3(x_clamp, y_clamp, z_clamp)
+		
+		#print(joint_rot_max)
+	
+	#if not idx:
+		#print(limb.global_rotation_degrees)
+	#limb.global_transform = limb.global_transform.translated(limb.global_position) * global_transform
+	#
+	#limb.global_rotation_degrees.x = clamp(limb.global_rotation_degrees.x, joint_rot_min.x, joint_rot_max.x)
+	#limb.global_rotation_degrees.y = clamp(limb.global_rotation_degrees.y, joint_rot_min.y, joint_rot_max.y)
+	#limb.global_rotation_degrees.z = clamp(limb.global_rotation_degrees.z, joint_rot_min.z, joint_rot_max.z)
+	##print(limb.global_rotation_degrees)
+	#
+	#limb.global_transform = global_transform * limb.global_transform.translated(limb.global_position)
+	
+	#if not idx:
+		#print(limb.global_rotation_degrees, " : ", global_rotation_degrees)
+
+
 
 
 
