@@ -14,40 +14,40 @@ door_markers = [NodePath("Marker3D"), NodePath("Marker3D2")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 7, 0)
 
 [node name="DungeonWall4" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, -3.5, 3.5, 0)
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, -8.74228e-08, 4.37114e-08, -1, -1, 1.31134e-07, 8.74228e-08, -3.5, 3.5, 0)
 
 [node name="DungeonWall5" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(-2.18557e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 2.18557e-07, 9.55343e-15, 3.5, 3.5, 0)
+transform = Transform3D(-1.62921e-07, -1, -4.37114e-08, 8.74228e-08, 4.37114e-08, -1, 1, -1.62921e-07, 8.74228e-08, 3.4999, 3.5, -0.000100136)
 
 [node name="DungeonWall6" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(-2.18557e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 2.18557e-07, 9.55343e-15, 3.5, 3.5, 6)
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 3.5, 6)
 
 [node name="DungeonWall7" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(-2.18557e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 2.18557e-07, 9.55343e-15, 3.5, 3.5, 12)
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 3.5, 12)
 
 [node name="DungeonWall13" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(-2.18557e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 2.18557e-07, 9.55343e-15, 3.5, 9.5, 6)
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 9.5, 6)
 
 [node name="DungeonWall14" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(-2.18557e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 2.18557e-07, 9.55343e-15, 3.5, 9.5, 12)
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 9.5, 12)
 
 [node name="DungeonWall17" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(-2.18557e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 2.18557e-07, 9.55343e-15, 3.5, 9.5, 18)
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 3.5, 9.5, 18)
 
 [node name="DungeonWall8" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, -3.5, 3.5, 6)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -3.5, 3.5, 6)
 
 [node name="DungeonWall12" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, -3.5, 9.5, 6)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -3.5, 9.5, 6)
 
 [node name="DungeonWall9" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, -3.5, 3.5, 12)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -3.5, 3.5, 12)
 
 [node name="DungeonWall15" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, -3.5, 9.5, 12)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -3.5, 9.5, 12)
 
 [node name="DungeonWall16" parent="." instance=ExtResource("1_gai8p")]
-transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, -3.5, 9.5, 18)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -3.5, 9.5, 18)
 
 [node name="DungeonWall3" parent="." instance=ExtResource("1_gai8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 5.9999, 18)

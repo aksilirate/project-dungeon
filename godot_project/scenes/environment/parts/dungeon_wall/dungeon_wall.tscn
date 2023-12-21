@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://djk3ut5bsq2jg"]
 
-[ext_resource type="Texture2D" uid="uid://dvk7dr2dmvt35" path="res://assests/textures/grey_wall_0.jpg" id="1_nnlyc"]
+[ext_resource type="Texture2D" uid="uid://bcnng58o1uo2" path="res://assests/textures/grey_wall_0.png" id="1_paidw"]
 [ext_resource type="ArrayMesh" uid="uid://p3rvfkjwukh7" path="res://assests/models/dungeon_wall_plane.obj" id="2_jhwl5"]
 [ext_resource type="ArrayMesh" uid="uid://cf222a5n32jbt" path="res://dungeon_wall.obj" id="3_8oinr"]
 
@@ -8,7 +8,7 @@
 data = PackedVector3Array(2.9999, 0.5, 2.9999, -3, 0.5, 2.9999, 2.9999, 0.5, -3, 2.9999, 0.5, -3, -3, 0.5, 2.9999, -3, 0.5, -3, -3, 0, -3, -3, 0, 2.9999, 2.9999, 0, -3, 2.9999, 0, -3, -3, 0, 2.9999, 2.9999, 0, 2.9999, 2.9999, 0, -3, 2.9999, 0.5, -3, -3, 0, -3, -3, 0, -3, 2.9999, 0.5, -3, -3, 0.5, -3, -3, 0, 2.9999, -3, 0.5, 2.9999, 2.9999, 0, 2.9999, 2.9999, 0, 2.9999, -3, 0.5, 2.9999, 2.9999, 0.5, 2.9999, 2.9999, 0, 2.9999, 2.9999, 0.5, 2.9999, 2.9999, 0, -3, 2.9999, 0, -3, 2.9999, 0.5, 2.9999, 2.9999, 0.5, -3, -3, 0, -3, -3, 0.5, -3, -3, 0, 2.9999, -3, 0, 2.9999, -3, 0.5, -3, -3, 0.5, 2.9999)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhv75"]
-albedo_texture = ExtResource("1_nnlyc")
+albedo_texture = ExtResource("1_paidw")
 texture_filter = 0
 
 [node name="DungeonWall" type="StaticBody3D"]
