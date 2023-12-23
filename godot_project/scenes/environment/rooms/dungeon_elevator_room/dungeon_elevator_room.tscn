@@ -1,80 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfekc2ysx38wc"]
+[gd_scene load_steps=6 format=3 uid="uid://dfekc2ysx38wc"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_au1ng"]
-[ext_resource type="ArrayMesh" uid="uid://cw1b3g72gpd2c" path="res://assests/models/dungeon_elevator.obj" id="1_wwx58"]
 [ext_resource type="PackedScene" uid="uid://cmbuj4m4n30hh" path="res://scenes/environment/parts/dungeon_floor/dungeon_floor.tscn" id="3_2r384"]
-[ext_resource type="Texture2D" uid="uid://bacuw66513p7i" path="res://assests/textures/plank_wood.png" id="3_x3qt4"]
 [ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/parts/dungeon_wall/dungeon_wall.tscn" id="4_s6uei"]
-[ext_resource type="Texture2D" uid="uid://beaphrmalm7wb" path="res://assests/textures/rope.png" id="4_tw8in"]
 [ext_resource type="PackedScene" uid="uid://e0yub0jk6xv6" path="res://scenes/environment/parts/dungeon_door/dungeon_door.tscn" id="5_exd86"]
-[ext_resource type="Texture2D" uid="uid://djobj0v0laqg2" path="res://assests/textures/metal.png" id="5_utylj"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e22hl"]
-albedo_texture = ExtResource("3_x3qt4")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgcf3"]
-albedo_texture = ExtResource("3_x3qt4")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b6hv"]
-albedo_texture = ExtResource("3_x3qt4")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_borhj"]
-albedo_texture = ExtResource("3_x3qt4")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7r3a"]
-albedo_texture = ExtResource("3_x3qt4")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7dpa"]
-albedo_texture = ExtResource("4_tw8in")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y65ni"]
-albedo_texture = ExtResource("4_tw8in")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qixh"]
-albedo_texture = ExtResource("4_tw8in")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pubx8"]
-albedo_texture = ExtResource("4_tw8in")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8gg5"]
-albedo_texture = ExtResource("5_utylj")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tnd5"]
-albedo_texture = ExtResource("5_utylj")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feybf"]
-albedo_texture = ExtResource("5_utylj")
-texture_filter = 0
+[ext_resource type="PackedScene" uid="uid://usqstx158yjp" path="res://scenes/environment/parts/dungeon_elevator/dungeon_elevator.tscn" id="5_geifn"]
 
 [node name="DungeonElevatorRoom" type="Node3D" node_paths=PackedStringArray("door_markers")]
 script = ExtResource("1_au1ng")
 door_markers = [NodePath("Marker3D")]
-
-[node name="DungeonElevator" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_wwx58")
-surface_material_override/0 = SubResource("StandardMaterial3D_e22hl")
-surface_material_override/1 = SubResource("StandardMaterial3D_pgcf3")
-surface_material_override/2 = SubResource("StandardMaterial3D_3b6hv")
-surface_material_override/3 = SubResource("StandardMaterial3D_borhj")
-surface_material_override/4 = SubResource("StandardMaterial3D_a7r3a")
-surface_material_override/5 = SubResource("StandardMaterial3D_a7dpa")
-surface_material_override/6 = SubResource("StandardMaterial3D_y65ni")
-surface_material_override/7 = SubResource("StandardMaterial3D_7qixh")
-surface_material_override/8 = SubResource("StandardMaterial3D_pubx8")
-surface_material_override/9 = SubResource("StandardMaterial3D_w8gg5")
-surface_material_override/10 = SubResource("StandardMaterial3D_3tnd5")
-surface_material_override/11 = SubResource("StandardMaterial3D_feybf")
 
 [node name="DungeonFloor2" parent="." instance=ExtResource("3_2r384")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 0)
@@ -249,3 +183,5 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="DungeonElevator" parent="." instance=ExtResource("5_geifn")]

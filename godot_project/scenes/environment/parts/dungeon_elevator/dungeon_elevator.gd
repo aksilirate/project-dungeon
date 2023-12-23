@@ -1,0 +1,1 @@
+class_name DungeonElevator extends Node3D

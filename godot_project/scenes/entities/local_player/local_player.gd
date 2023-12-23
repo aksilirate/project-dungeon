@@ -2,7 +2,6 @@ class_name LocalPlayer extends CharacterBody3D
 
 
 
-@export var floor_raycast: RayCast3D
 @export var camera_target: Marker3D
 @export var camera: Camera3D
 
@@ -32,7 +31,7 @@ func _process(delta: float) -> void:
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var input_dir: Vector3 = get_input_dir()
 	velocity = get_move_force(input_dir)
 	velocity = get_gravity()
@@ -41,9 +40,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 10
 	
 	move_and_slide()
-	
-	velocity = get_pull_force(input_dir, delta)
-
 
 
 
@@ -52,8 +48,8 @@ func get_move_force(input_dir: Vector3) -> Vector3:
 	var horizontal_input: Vector2 = input_vector.rotated(-deg_to_rad(rotation_degrees.y))
 	var move_force = Vector3(horizontal_input.x, velocity.y, horizontal_input.y)
 	
-	if floor_raycast.is_colliding():
-		var normal: Vector3 = floor_raycast.get_collision_normal()
+	if is_on_floor():
+		var normal: Vector3 = get_floor_normal()
 		move_force = normal.cross(Vector3.FORWARD.rotated(Vector3.UP, global_rotation.y - (PI / 2)))
 		move_force = move_force.rotated(normal, input_vector.angle_to(Vector2.UP))
 		move_force *= movement_speed * input_vector.length()
@@ -66,24 +62,10 @@ func get_move_force(input_dir: Vector3) -> Vector3:
 
 
 func get_gravity() -> Vector3:
-	if not floor_raycast.is_colliding():
+	if not is_on_floor():
 		return Vector3(velocity.x, velocity.y - 1, velocity.z)
 	
 	return Vector3(velocity.x, 0, velocity.z)
-
-
-
-
-func get_pull_force(input_dir: Vector3, delta: float) -> Vector3:
-	if input_dir.y:
-		return velocity
-	
-	if floor_raycast.is_colliding():
-		var pull_strength: float = floor_raycast.target_position.y + floor_raycast.global_position.distance_to(floor_raycast.get_collision_point())
-		var pull_force: Vector3 = Vector3(velocity.x, -pull_strength / delta, velocity.z)
-		return pull_force
-	
-	return velocity
 
 
 

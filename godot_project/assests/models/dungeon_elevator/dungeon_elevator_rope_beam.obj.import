@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://be70s82tqxesq"
+path="res://.godot/imported/dungeon_elevator_rope_beam.obj-ec907ae12981edaa3d09eb6c19ca8675.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dungeon_elevator_rope_beam.obj-ec907ae12981edaa3d09eb6c19ca8675.mesh"]
+
+source_file="res://assests/models/dungeon_elevator/dungeon_elevator_rope_beam.obj"
+dest_files=["res://.godot/imported/dungeon_elevator_rope_beam.obj-ec907ae12981edaa3d09eb6c19ca8675.mesh", "res://.godot/imported/dungeon_elevator_rope_beam.obj-ec907ae12981edaa3d09eb6c19ca8675.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

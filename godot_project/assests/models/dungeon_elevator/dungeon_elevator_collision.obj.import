@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bwjnfxu832bo8"
+path="res://.godot/imported/dungeon_elevator_collision.obj-25c5fb20fb318d3a1d2d989d940bc69e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dungeon_elevator_collision.obj-25c5fb20fb318d3a1d2d989d940bc69e.mesh"]
+
+source_file="res://assests/models/dungeon_elevator/dungeon_elevator_collision.obj"
+dest_files=["res://.godot/imported/dungeon_elevator_collision.obj-25c5fb20fb318d3a1d2d989d940bc69e.mesh", "res://.godot/imported/dungeon_elevator_collision.obj-25c5fb20fb318d3a1d2d989d940bc69e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -9,8 +9,8 @@ class_name Room extends Node3D
 
 
 
-func get_aabb() -> AABB:
-	var aabb: AABB = AABB()
+func get_aabb_arr() -> Array[AABB]:
+	var aabb_arr: Array[AABB] = []
 	
 	for child in NodeUtils.get_all_children(self):
 		if child is VisualInstance3D:
@@ -20,10 +20,6 @@ func get_aabb() -> AABB:
 			if not child_aabb.size.x or not child_aabb.size.y or not child_aabb.size.z:
 				continue
 			
-			if aabb.size == Vector3.ZERO:
-				aabb = child_aabb
-				continue
-			
-			aabb = aabb.merge(child_aabb)
+			aabb_arr.push_back(child_aabb)
 	
-	return aabb
+	return aabb_arr
