@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0smrtbndbm4u"]
 
 [ext_resource type="ArrayMesh" uid="uid://cebcvgcpmuh74" path="res://assests/models/ramp.obj" id="1_ry51u"]
-[ext_resource type="Texture2D" uid="uid://dvk7dr2dmvt35" path="res://assests/textures/grey_wall_0.jpg" id="2_48y3o"]
+[ext_resource type="Texture2D" uid="uid://cdaj7vsud4p25" path="res://assests/textures/dungeon_floor_0.png" id="2_n521j"]
 [ext_resource type="ArrayMesh" uid="uid://cq15bnsq4mdxe" path="res://assests/models/ramp_collision.obj" id="3_6f4jn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8jh2"]
-albedo_texture = ExtResource("2_48y3o")
+albedo_texture = ExtResource("2_n521j")
 texture_filter = 0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1cdnm"]

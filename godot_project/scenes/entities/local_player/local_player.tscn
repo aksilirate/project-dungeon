@@ -29,5 +29,6 @@ near = 0.001
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
 light_color = Color(0.898039, 0.952941, 0.886275, 1)
+shadow_bias = 0.0
 omni_range = 10.0
 omni_attenuation = 0.5

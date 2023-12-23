@@ -12,6 +12,7 @@ albedo_texture = ExtResource("1_paidw")
 texture_filter = 0
 
 [node name="DungeonWall" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3, -0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_uy66e")

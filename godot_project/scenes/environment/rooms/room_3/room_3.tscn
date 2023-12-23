@@ -1,29 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhgkkf5e8xsh6"]
+[gd_scene load_steps=5 format=3 uid="uid://dhgkkf5e8xsh6"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_tsxvh"]
 [ext_resource type="PackedScene" uid="uid://djk3ut5bsq2jg" path="res://scenes/environment/parts/dungeon_wall/dungeon_wall.tscn" id="2_0idtn"]
 [ext_resource type="PackedScene" uid="uid://e0yub0jk6xv6" path="res://scenes/environment/parts/dungeon_door/dungeon_door.tscn" id="3_eqsdy"]
+[ext_resource type="PackedScene" uid="uid://cmbuj4m4n30hh" path="res://scenes/environment/parts/dungeon_floor/dungeon_floor.tscn" id="4_x4knc"]
 
 [node name="Room3" type="Node3D" node_paths=PackedStringArray("door_markers")]
 script = ExtResource("1_tsxvh")
 door_markers = [NodePath("Marker3D")]
-
-[node name="DungeonWall" parent="." instance=ExtResource("2_0idtn")]
-
-[node name="DungeonWall12" parent="." instance=ExtResource("2_0idtn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-
-[node name="DungeonWall6" parent="." instance=ExtResource("2_0idtn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-
-[node name="DungeonWall5" parent="." instance=ExtResource("2_0idtn")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.0212851, 7, 0.00018692)
-
-[node name="DungeonWall14" parent="." instance=ExtResource("2_0idtn")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.0212851, 7, 6.00019)
-
-[node name="DungeonWall8" parent="." instance=ExtResource("2_0idtn")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 6.02129, 7, 0.00018692)
 
 [node name="DungeonWall2" parent="." instance=ExtResource("2_0idtn")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -3.5)
@@ -54,3 +38,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5.5)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
+
+[node name="DungeonFloor" parent="." instance=ExtResource("4_x4knc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 0.000100136, 6.0001)
+
+[node name="DungeonFloor2" parent="." instance=ExtResource("4_x4knc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 0.000100136, 0.000100136)
+
+[node name="DungeonFloor3" parent="." instance=ExtResource("4_x4knc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.000100136, 0.000100136)
+
+[node name="DungeonFloor4" parent="." instance=ExtResource("4_x4knc")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -4.76837e-07, 7.0001, 6.0001)
+
+[node name="DungeonFloor5" parent="." instance=ExtResource("4_x4knc")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 6, 7.0001, 0.000100136)
+
+[node name="DungeonFloor6" parent="." instance=ExtResource("4_x4knc")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -4.76837e-07, 7.0001, 0.000100136)

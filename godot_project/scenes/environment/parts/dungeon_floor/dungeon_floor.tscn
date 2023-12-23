@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmbuj4m4n30hh"]
+
+[ext_resource type="Texture2D" uid="uid://cdaj7vsud4p25" path="res://assests/textures/dungeon_floor_0.png" id="1_onm8a"]
+[ext_resource type="Script" path="res://scenes/environment/parts/dungeon_floor/dungeon_floor.gd" id="1_vvldv"]
+[ext_resource type="ArrayMesh" uid="uid://cf222a5n32jbt" path="res://dungeon_wall.obj" id="3_agr2p"]
+[ext_resource type="ArrayMesh" uid="uid://b8i83nb1k5gsl" path="res://assests/models/dungeon_floor_plane.obj" id="3_uwnu5"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0iekt"]
+data = PackedVector3Array(2.9999, 0.5, 2.9999, -3, 0.5, 2.9999, 2.9999, 0.5, -3, 2.9999, 0.5, -3, -3, 0.5, 2.9999, -3, 0.5, -3, -3, 0, -3, -3, 0, 2.9999, 2.9999, 0, -3, 2.9999, 0, -3, -3, 0, 2.9999, 2.9999, 0, 2.9999, 2.9999, 0, -3, 2.9999, 0.5, -3, -3, 0, -3, -3, 0, -3, 2.9999, 0.5, -3, -3, 0.5, -3, -3, 0, 2.9999, -3, 0.5, 2.9999, 2.9999, 0, 2.9999, 2.9999, 0, 2.9999, -3, 0.5, 2.9999, 2.9999, 0.5, 2.9999, 2.9999, 0, 2.9999, 2.9999, 0.5, 2.9999, 2.9999, 0, -3, 2.9999, 0, -3, 2.9999, 0.5, 2.9999, 2.9999, 0.5, -3, -3, 0, -3, -3, 0.5, -3, -3, 0, 2.9999, -3, 0, 2.9999, -3, 0.5, -3, -3, 0.5, 2.9999)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmbt6"]
+albedo_texture = ExtResource("1_onm8a")
+texture_filter = 0
+
+[node name="DungeonFloor" type="StaticBody3D"]
+script = ExtResource("1_vvldv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_0iekt")
+
+[node name="PlaneMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_vmbt6")
+mesh = ExtResource("3_uwnu5")
+
+[node name="DungeonWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = ExtResource("3_agr2p")
