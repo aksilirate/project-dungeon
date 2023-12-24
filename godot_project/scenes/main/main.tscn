@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3gkrp8gigsvb"]
+[gd_scene load_steps=10 format=3 uid="uid://d3gkrp8gigsvb"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_o7st6"]
+[ext_resource type="Script" path="res://scenes/main/WorldProcessor.gd" id="3_56v05"]
 [ext_resource type="Script" path="res://scenes/main/node_manager.gd" id="8_cnn1u"]
 [ext_resource type="PackedScene" uid="uid://1p5wg4m6obf3" path="res://scenes/procedural_generation/dungeon_generator/dungeon_generator.tscn" id="9_nnw25"]
 
@@ -126,6 +127,10 @@ node_manager = NodePath("NodeManager")
 
 [node name="NodeManager" type="Node" parent="."]
 script = ExtResource("8_cnn1u")
+
+[node name="WorldProcessor" type="Node" parent="." node_paths=PackedStringArray("node_manager")]
+script = ExtResource("3_56v05")
+node_manager = NodePath("../NodeManager")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

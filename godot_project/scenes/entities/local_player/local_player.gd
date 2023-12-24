@@ -46,17 +46,19 @@ func _physics_process(_delta: float) -> void:
 func get_move_force(input_dir: Vector3) -> Vector3:
 	var input_vector: Vector2 = Vector2(input_dir.z, input_dir.x).normalized()
 	var horizontal_input: Vector2 = input_vector.rotated(-deg_to_rad(rotation_degrees.y))
-	var move_force = Vector3(horizontal_input.x, velocity.y, horizontal_input.y)
+	var move_force = Vector3(horizontal_input.x, 0, horizontal_input.y)
 	
 	if is_on_floor():
 		var normal: Vector3 = get_floor_normal()
 		move_force = normal.cross(Vector3.FORWARD.rotated(Vector3.UP, global_rotation.y - (PI / 2)))
 		move_force = move_force.rotated(normal, input_vector.angle_to(Vector2.UP))
-		move_force *= movement_speed * input_vector.length()
-		return move_force
 	
 	
-	return velocity
+	move_force *= movement_speed * input_vector.length()
+	move_force.y = velocity.y
+	
+	
+	return move_force
 
 
 

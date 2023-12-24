@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://usqstx158yjp"]
+[gd_scene load_steps=6 format=3 uid="uid://usqstx158yjp"]
 
 [ext_resource type="Script" path="res://scenes/environment/parts/dungeon_elevator/dungeon_elevator.gd" id="1_7aos7"]
 [ext_resource type="PackedScene" uid="uid://cs0n6mi6hnjc8" path="res://scenes/environment/parts/dungeon_object_0/dungeon_object_0.tscn" id="1_cn08f"]
 [ext_resource type="PackedScene" uid="uid://dov47s33xbgpd" path="res://scenes/environment/parts/dungeon_elevator_platform/dungeon_elevator_platform.tscn" id="2_751ex"]
 [ext_resource type="PackedScene" uid="uid://b64mev6krtyl1" path="res://scenes/environment/parts/dungeon_elevator_rope_beam/dungeon_elevator_rope_beam.tscn" id="3_ug1ee"]
 
-[node name="DungeonElevator" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_54hmu"]
+size = Vector3(4.7, 1.2, 4.9)
+
+[node name="DungeonElevator" type="Area3D" node_paths=PackedStringArray("platform")]
 script = ExtResource("1_7aos7")
+platform = NodePath("DungeonElevatorPlatform")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0499995, 0.6, 2.38419e-07)
+shape = SubResource("BoxShape3D_54hmu")
 
 [node name="DungeonObject0" parent="." instance=ExtResource("1_cn08f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000100136, 0, -3.7501)
@@ -14,7 +22,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000100136, 0, -3.7501)
 [node name="DungeonObject1" parent="." instance=ExtResource("1_cn08f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000100136, 0, 3.7499)
 
-[node name="DungeonElevatorPlatform" parent="." instance=ExtResource("2_751ex")]
-
 [node name="DungeonElevatorRopeBeam" parent="." instance=ExtResource("3_ug1ee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.296848, 5.17434, 0)
+
+[node name="DungeonElevatorPlatform" parent="." instance=ExtResource("2_751ex")]
+
+[node name="Node3D" type="Node3D" parent="."]

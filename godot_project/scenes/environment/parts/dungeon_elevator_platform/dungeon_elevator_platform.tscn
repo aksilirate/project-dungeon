@@ -1,53 +1,77 @@
-[gd_scene load_steps=13 format=3 uid="uid://dov47s33xbgpd"]
+[gd_scene load_steps=15 format=3 uid="uid://dov47s33xbgpd"]
 
+[ext_resource type="Script" path="res://scenes/environment/parts/dungeon_elevator_platform/dungeon_elevator_platform.gd" id="1_2vhuo"]
 [ext_resource type="ArrayMesh" uid="uid://cw1b3g72gpd2c" path="res://assests/models/dungeon_elevator/dungeon_elevator.obj" id="1_et553"]
 [ext_resource type="Texture2D" uid="uid://bacuw66513p7i" path="res://assests/textures/plank_wood.png" id="2_kbftc"]
+[ext_resource type="Material" uid="uid://bf3y1bb1f6rfa" path="res://assests/materials/plank_wood.tres" id="2_qsrn6"]
 [ext_resource type="Texture2D" uid="uid://beaphrmalm7wb" path="res://assests/textures/rope.png" id="3_snb50"]
-[ext_resource type="Texture2D" uid="uid://djobj0v0laqg2" path="res://assests/textures/metal.png" id="4_paxbt"]
+[ext_resource type="Material" uid="uid://bd6wbdqhrinv" path="res://assests/materials/rope.tres" id="4_t78vq"]
+[ext_resource type="Material" uid="uid://dssa8hpx5o8f6" path="res://assests/materials/metal.tres" id="6_xgdoo"]
+[ext_resource type="ArrayMesh" uid="uid://dqee62l6cnpuu" path="res://assests/models/dungeon_elevator/dungeon_elevator_rope.obj" id="7_06yad"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qcol"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5rwb"]
 albedo_texture = ExtResource("2_kbftc")
 texture_filter = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpaal"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3k4yd"]
 albedo_texture = ExtResource("2_kbftc")
 texture_filter = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21s3r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brhxf"]
 albedo_texture = ExtResource("3_snb50")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k2bx"]
-albedo_texture = ExtResource("2_kbftc")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wq7ek"]
-albedo_texture = ExtResource("3_snb50")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pup5j"]
-albedo_texture = ExtResource("3_snb50")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2k0lp"]
-albedo_texture = ExtResource("4_paxbt")
 texture_filter = 0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ieo3t"]
 data = PackedVector3Array(2.1999, 1, -2.5, 2.1999, 0, -2.5, 2.5, 1, -2.5, 2.5, 1, -2.5, 2.1999, 0, -2.5, 2.5, 0, -2.5, 2.5, 1, -2.5, 2.5, 0, -2.5, 2.5, 1, -2.2, 2.5, 1, -2.2, 2.5, 0, -2.5, 2.5, 0, -2.2, 2.5, 0, -2.5, 2.1999, 0, -2.5, 2.5, 0, -2.2, 2.5, 0, -2.2, 2.1999, 0, -2.5, 2.1999, 0, -2.2, -2.2, 0, -2.2, 2.1999, 0, -2.2, -2.2, 0, -2.5, -2.2, 0, -2.5, 2.1999, 0, -2.2, 2.1999, 0, -2.5, -2.2, 0, -2.5, 2.1999, 0, -2.5, -2.2, 1, -2.5, -2.2, 1, -2.5, 2.1999, 0, -2.5, 2.1999, 1, -2.5, 2.5, 1, -2.2, 2.5, 0, -2.2, 2.5, 1, -1.2, 2.5, 1, -1.2, 2.5, 0, -2.2, 2.5, 0, -1.2, 2.1999, 1, -2.5, 2.5, 1, -2.5, 2.1999, 1, -2.2, 2.1999, 1, -2.2, 2.5, 1, -2.5, 2.5, 1, -2.2, 2.1999, 0, -2.2, -2.2, 0, -2.2, 2.1999, 1, -2.2, 2.1999, 1, -2.2, -2.2, 0, -2.2, -2.2, 1, -2.2, 2.1999, 1, 2.5, -2.2, 1, 2.5, 2.1999, 1, 2.1999, 2.1999, 1, 2.1999, -2.2, 1, 2.5, -2.2, 1, 2.1999, 2.5, 1, -1.2, 2.5, 0, -1.2, 2.1999, 1, -1.2, 2.1999, 1, -1.2, 2.5, 0, -1.2, 2.1999, 0, -1.2, 2.1999, 1, -2.2, 2.5, 1, -2.2, 2.1999, 1, -1.2, 2.1999, 1, -1.2, 2.5, 1, -2.2, 2.5, 1, -1.2, 2.5, 0, -2.2, 2.1999, 0, -2.2, 2.5, 0, -1.2, 2.5, 0, -1.2, 2.1999, 0, -2.2, 2.1999, 0, -1.2, 2.1999, 0, -2.2, 2.1999, 1, -2.2, 2.1999, 0, -1.2, 2.1999, 0, -1.2, 2.1999, 1, -2.2, 2.1999, 1, -1.2, -2.5, 0, -2.5, -2.2, 0, -2.5, -2.5, 1, -2.5, -2.5, 1, -2.5, -2.2, 0, -2.5, -2.2, 1, -2.5, -2.5, 0, -2.2, -2.5, 0, -2.5, -2.5, 1, -2.2, -2.5, 1, -2.2, -2.5, 0, -2.5, -2.5, 1, -2.5, -2.2, 0, -2.2, -2.2, 0, -2.5, -2.5, 0, -2.2, -2.5, 0, -2.2, -2.2, 0, -2.5, -2.5, 0, -2.5, -2.5, 0, -1.2, -2.5, 0, -2.2, -2.5, 1, -1.2, -2.5, 1, -1.2, -2.5, 0, -2.2, -2.5, 1, -2.2, -2.5, 1, -2.2, -2.5, 1, -2.5, -2.2, 1, -2.2, -2.2, 1, -2.2, -2.5, 1, -2.5, -2.2, 1, -2.5, -2.2, 0, -1.2, -2.5, 0, -1.2, -2.2, 1, -1.2, -2.2, 1, -1.2, -2.5, 0, -1.2, -2.5, 1, -1.2, -2.5, 1, -1.2, -2.5, 1, -2.2, -2.2, 1, -1.2, -2.2, 1, -1.2, -2.5, 1, -2.2, -2.2, 1, -2.2, -2.2, 0, -1.2, -2.2, 0, -2.2, -2.5, 0, -1.2, -2.5, 0, -1.2, -2.2, 0, -2.2, -2.5, 0, -2.2, -2.2, 1, -1.2, -2.2, 1, -2.2, -2.2, 0, -1.2, -2.2, 0, -1.2, -2.2, 1, -2.2, -2.2, 0, -2.2, 2.5, 0, 2.5, 2.1999, 0, 2.5, 2.5, 1, 2.5, 2.5, 1, 2.5, 2.1999, 0, 2.5, 2.1999, 1, 2.5, 2.5, 0, 2.1999, 2.5, 0, 2.5, 2.5, 1, 2.1999, 2.5, 1, 2.1999, 2.5, 0, 2.5, 2.5, 1, 2.5, 2.1999, 0, 2.1999, 2.1999, 0, 2.5, 2.5, 0, 2.1999, 2.5, 0, 2.1999, 2.1999, 0, 2.5, 2.5, 0, 2.5, -2.2, 0, 2.5, 2.1999, 0, 2.5, -2.2, 0, 2.1999, -2.2, 0, 2.1999, 2.1999, 0, 2.5, 2.1999, 0, 2.1999, -2.2, 1, 2.5, 2.1999, 1, 2.5, -2.2, 0, 2.5, -2.2, 0, 2.5, 2.1999, 1, 2.5, 2.1999, 0, 2.5, 2.5, 0, 1.1999, 2.5, 0, 2.1999, 2.5, 1, 1.1999, 2.5, 1, 1.1999, 2.5, 0, 2.1999, 2.5, 1, 2.1999, 2.5, 1, 2.1999, 2.5, 1, 2.5, 2.1999, 1, 2.1999, 2.1999, 1, 2.1999, 2.5, 1, 2.5, 2.1999, 1, 2.5, -2.2, 1, 2.1999, -2.2, 0, 2.1999, 2.1999, 1, 2.1999, 2.1999, 1, 2.1999, -2.2, 0, 2.1999, 2.1999, 0, 2.1999, 2.1999, 0, 1.1999, 2.5, 0, 1.1999, 2.1999, 1, 1.1999, 2.1999, 1, 1.1999, 2.5, 0, 1.1999, 2.5, 1, 1.1999, 2.5, 1, 1.1999, 2.5, 1, 2.1999, 2.1999, 1, 1.1999, 2.1999, 1, 1.1999, 2.5, 1, 2.1999, 2.1999, 1, 2.1999, 2.1999, 0, 1.1999, 2.1999, 0, 2.1999, 2.5, 0, 1.1999, 2.5, 0, 1.1999, 2.1999, 0, 2.1999, 2.5, 0, 2.1999, 2.1999, 1, 1.1999, 2.1999, 1, 2.1999, 2.1999, 0, 1.1999, 2.1999, 0, 1.1999, 2.1999, 1, 2.1999, 2.1999, 0, 2.1999, -2.2, 1, 2.5, -2.2, 0, 2.5, -2.5, 1, 2.5, -2.5, 1, 2.5, -2.2, 0, 2.5, -2.5, 0, 2.5, -2.5, 1, 2.5, -2.5, 0, 2.5, -2.5, 1, 2.1999, -2.5, 1, 2.1999, -2.5, 0, 2.5, -2.5, 0, 2.1999, -2.5, 0, 2.5, -2.2, 0, 2.5, -2.5, 0, 2.1999, -2.5, 0, 2.1999, -2.2, 0, 2.5, -2.2, 0, 2.1999, -2.5, 1, 2.1999, -2.5, 0, 2.1999, -2.5, 1, 1.1999, -2.5, 1, 1.1999, -2.5, 0, 2.1999, -2.5, 0, 1.1999, -2.2, 1, 2.5, -2.5, 1, 2.5, -2.2, 1, 2.1999, -2.2, 1, 2.1999, -2.5, 1, 2.5, -2.5, 1, 2.1999, -2.5, 1, 1.1999, -2.5, 0, 1.1999, -2.2, 1, 1.1999, -2.2, 1, 1.1999, -2.5, 0, 1.1999, -2.2, 0, 1.1999, -2.2, 1, 2.1999, -2.5, 1, 2.1999, -2.2, 1, 1.1999, -2.2, 1, 1.1999, -2.5, 1, 2.1999, -2.5, 1, 1.1999, -2.5, 0, 2.1999, -2.2, 0, 2.1999, -2.5, 0, 1.1999, -2.5, 0, 1.1999, -2.2, 0, 2.1999, -2.2, 0, 1.1999, -2.2, 0, 2.1999, -2.2, 1, 2.1999, -2.2, 0, 1.1999, -2.2, 0, 1.1999, -2.2, 1, 2.1999, -2.2, 1, 1.1999, -2.2, 1, -2.2, -2.2, 1, -2.5, 2.1999, 1, -2.2, 2.1999, 1, -2.2, -2.2, 1, -2.5, 2.1999, 1, -2.5, 2.1, 1.1, -2.1, 2.1, 0, -2.1, 2.1, 1.1, -2.6, 2.1, 1.1, -2.6, 2.1, 0, -2.1, 2.1, 0, -2.6, 2.1, 1.1, -2.6, 2.1, 0, -2.6, 2.6, 1.1, -2.6, 2.6, 1.1, -2.6, 2.1, 0, -2.6, 2.6, 0, -2.6, 2.6, 1.1, -2.6, 2.6, 0, -2.6, 2.6, 1.1, -2.1, 2.6, 1.1, -2.1, 2.6, 0, -2.6, 2.6, 0, -2.1, 2.6, 1.1, -2.1, 2.6, 0, -2.1, 2.1, 1.1, -2.1, 2.1, 1.1, -2.1, 2.6, 0, -2.1, 2.1, 0, -2.1, 2.6, 0, -2.6, 2.1, 0, -2.6, 2.6, 0, -2.1, 2.6, 0, -2.1, 2.1, 0, -2.6, 2.1, 0, -2.1, 2.1, 1.1, -2.6, 2.6, 1.1, -2.6, 2.1, 1.1, -2.1, 2.1, 1.1, -2.1, 2.6, 1.1, -2.6, 2.6, 1.1, -2.1, -2.1, 0, -2.6, -2.1, 0, -2.1, -2.1, 1.1, -2.6, -2.1, 1.1, -2.6, -2.1, 0, -2.1, -2.1, 1.1, -2.1, -2.6, 0, -2.6, -2.1, 0, -2.6, -2.6, 1.1, -2.6, -2.6, 1.1, -2.6, -2.1, 0, -2.6, -2.1, 1.1, -2.6, -2.6, 0, -2.1, -2.6, 0, -2.6, -2.6, 1.1, -2.1, -2.6, 1.1, -2.1, -2.6, 0, -2.6, -2.6, 1.1, -2.6, -2.1, 0, -2.1, -2.6, 0, -2.1, -2.1, 1.1, -2.1, -2.1, 1.1, -2.1, -2.6, 0, -2.1, -2.6, 1.1, -2.1, -2.1, 0, -2.1, -2.1, 0, -2.6, -2.6, 0, -2.1, -2.6, 0, -2.1, -2.1, 0, -2.6, -2.6, 0, -2.6, -2.6, 1.1, -2.1, -2.6, 1.1, -2.6, -2.1, 1.1, -2.1, -2.1, 1.1, -2.1, -2.6, 1.1, -2.6, -2.1, 1.1, -2.6, 2.1, 0, 2.6, 2.1, 0, 2.1, 2.1, 1.1, 2.6, 2.1, 1.1, 2.6, 2.1, 0, 2.1, 2.1, 1.1, 2.1, 2.6, 0, 2.6, 2.1, 0, 2.6, 2.6, 1.1, 2.6, 2.6, 1.1, 2.6, 2.1, 0, 2.6, 2.1, 1.1, 2.6, 2.6, 0, 2.1, 2.6, 0, 2.6, 2.6, 1.1, 2.1, 2.6, 1.1, 2.1, 2.6, 0, 2.6, 2.6, 1.1, 2.6, 2.1, 0, 2.1, 2.6, 0, 2.1, 2.1, 1.1, 2.1, 2.1, 1.1, 2.1, 2.6, 0, 2.1, 2.6, 1.1, 2.1, 2.1, 0, 2.1, 2.1, 0, 2.6, 2.6, 0, 2.1, 2.6, 0, 2.1, 2.1, 0, 2.6, 2.6, 0, 2.6, 2.6, 1.1, 2.1, 2.6, 1.1, 2.6, 2.1, 1.1, 2.1, 2.1, 1.1, 2.1, 2.6, 1.1, 2.6, 2.1, 1.1, 2.6, -2.1, 1.1, 2.1, -2.1, 0, 2.1, -2.1, 1.1, 2.6, -2.1, 1.1, 2.6, -2.1, 0, 2.1, -2.1, 0, 2.6, -2.1, 1.1, 2.6, -2.1, 0, 2.6, -2.6, 1.1, 2.6, -2.6, 1.1, 2.6, -2.1, 0, 2.6, -2.6, 0, 2.6, -2.6, 1.1, 2.6, -2.6, 0, 2.6, -2.6, 1.1, 2.1, -2.6, 1.1, 2.1, -2.6, 0, 2.6, -2.6, 0, 2.1, -2.6, 1.1, 2.1, -2.6, 0, 2.1, -2.1, 1.1, 2.1, -2.1, 1.1, 2.1, -2.6, 0, 2.1, -2.1, 0, 2.1, -2.6, 0, 2.6, -2.1, 0, 2.6, -2.6, 0, 2.1, -2.6, 0, 2.1, -2.1, 0, 2.6, -2.1, 0, 2.1, -2.1, 1.1, 2.6, -2.6, 1.1, 2.6, -2.1, 1.1, 2.1, -2.1, 1.1, 2.1, -2.6, 1.1, 2.6, -2.6, 1.1, 2.1, 2.7043, -0.3, -2.7043, 2.7043, 0, -2.7043, -2.7043, -0.3, -2.7043, -2.7043, -0.3, -2.7043, 2.7043, 0, -2.7043, -2.7043, 0, -2.7043, -2.7043, 0, -2.7043, -2.7043, 0, 2.7043, -2.7043, -0.3, -2.7043, -2.7043, -0.3, -2.7043, -2.7043, 0, 2.7043, -2.7043, -0.3, 2.7043, -2.7043, -0.3, -2.7043, -2.7043, -0.3, 2.7043, 2.7043, -0.3, -2.7043, 2.7043, -0.3, -2.7043, -2.7043, -0.3, 2.7043, 2.7043, -0.3, 2.7043, 2.7043, -0.3, -2.7043, 2.7043, -0.3, 2.7043, 2.7043, 0, -2.7043, 2.7043, 0, -2.7043, 2.7043, -0.3, 2.7043, 2.7043, 0, 2.7043, -2.7043, 0, 2.7043, 2.7043, 0, 2.7043, -2.7043, -0.3, 2.7043, -2.7043, -0.3, 2.7043, 2.7043, 0, 2.7043, 2.7043, -0.3, 2.7043, 2.7043, 0, -2.7043, 2.7043, 0, 2.7043, -2.7043, 0, -2.7043, -2.7043, 0, -2.7043, 2.7043, 0, 2.7043, -2.7043, 0, 2.7043)
 
-[node name="DungeonElevatorPlatform" type="AnimatableBody3D"]
+[sub_resource type="Shader" id="Shader_gy36b"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float height;
+
+varying vec3 world_position;
+
+void vertex() {
+	 world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo_tex.rgb;
+	ALPHA = round(1.025 - ((world_position.y + height) * 0.1));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odpei"]
+render_priority = 0
+shader = SubResource("Shader_gy36b")
+shader_parameter/height = null
+shader_parameter/texture_albedo = ExtResource("3_snb50")
+
+[node name="DungeonElevatorPlatform" type="AnimatableBody3D" node_paths=PackedStringArray("rope")]
 sync_to_physics = false
+script = ExtResource("1_2vhuo")
+rope = NodePath("RopeMesh")
 
 [node name="DungeonElevator" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_et553")
-surface_material_override/0 = SubResource("StandardMaterial3D_6qcol")
-surface_material_override/1 = SubResource("StandardMaterial3D_bpaal")
-surface_material_override/2 = SubResource("StandardMaterial3D_21s3r")
-surface_material_override/3 = SubResource("StandardMaterial3D_1k2bx")
-surface_material_override/4 = SubResource("StandardMaterial3D_wq7ek")
-surface_material_override/5 = SubResource("StandardMaterial3D_pup5j")
-surface_material_override/6 = SubResource("StandardMaterial3D_2k0lp")
+surface_material_override/0 = ExtResource("2_qsrn6")
+surface_material_override/1 = SubResource("StandardMaterial3D_t5rwb")
+surface_material_override/2 = ExtResource("4_t78vq")
+surface_material_override/3 = SubResource("StandardMaterial3D_3k4yd")
+surface_material_override/4 = SubResource("StandardMaterial3D_brhxf")
+surface_material_override/5 = ExtResource("6_xgdoo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_ieo3t")
+
+[node name="RopeMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00265465, 2.51299, 0.00351925)
+mesh = ExtResource("7_06yad")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_odpei")
