@@ -50,7 +50,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odpei"]
 render_priority = 0
 shader = SubResource("Shader_gy36b")
-shader_parameter/height = null
+shader_parameter/height = 0.0
 shader_parameter/texture_albedo = ExtResource("3_snb50")
 
 [node name="DungeonElevatorPlatform" type="AnimatableBody3D" node_paths=PackedStringArray("rope")]

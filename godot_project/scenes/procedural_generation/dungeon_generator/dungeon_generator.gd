@@ -74,14 +74,15 @@ func generate_rooms() -> void:
 		for door_marker in room.door_markers:
 			if used_door_markers.has(door_marker):
 				continue
-			
-			if idx > 5 and not spawned_elevator_room:
-				var new_room: Room = elevator_room_scene.instantiate() as Room
+				
+			var new_room: Room
+			if idx > 1 and not spawned_elevator_room:
+				new_room = elevator_room_scene.instantiate() as Room
 				if try_to_spawn_room(door_marker, new_room):
 					spawned_elevator_room = true
 					continue
 			
-			var new_room: Room = get_rand_room().instantiate() as Room
+			new_room = get_rand_room().instantiate() as Room
 			try_to_spawn_room(door_marker, new_room)
 
 

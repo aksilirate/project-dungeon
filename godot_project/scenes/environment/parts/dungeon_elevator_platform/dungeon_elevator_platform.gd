@@ -7,4 +7,5 @@ class_name DungeonElevatorPlatform extends AnimatableBody3D
 
 
 func _ready() -> void:
-	(rope.get_surface_override_material(0) as ShaderMaterial).set_shader_parameter("height", global_position.y)
+	await get_tree().process_frame
+	(rope.get_surface_override_material(0) as ShaderMaterial).set_shader_parameter("height", -global_position.y)

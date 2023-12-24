@@ -7,8 +7,6 @@ class_name Room extends Node3D
 
 
 
-
-
 func get_aabb_arr() -> Array[AABB]:
 	var aabb_arr: Array[AABB] = []
 	
