@@ -14,6 +14,7 @@ var rand := RandomNumberGenerator.new()
 
 
 func _ready() -> void:
+	rand.seed = -8246618274731081350
 	print("seed: ", rand.seed)
 	setup_spawn()
 
