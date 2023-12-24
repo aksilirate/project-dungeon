@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7wyq06vbsi3u"]
+[gd_scene load_steps=12 format=3 uid="uid://c7wyq06vbsi3u"]
 
 [ext_resource type="Script" path="res://scenes/world/world_viewport_container/world_viewport_container.gd" id="1_3yebx"]
 [ext_resource type="PackedScene" uid="uid://1p5wg4m6obf3" path="res://scenes/procedural_generation/dungeon_generator/dungeon_generator.tscn" id="1_la1li"]
@@ -136,10 +136,27 @@ tracks/0/keys = {
 "values": [0.3]
 }
 
+[sub_resource type="Animation" id="Animation_2sf0u"]
+resource_name = "unfade"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [50.0, 0.3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5i6be"]
 _data = {
 "RESET": SubResource("Animation_7vwwq"),
-"fade": SubResource("Animation_ip4r5")
+"fade": SubResource("Animation_ip4r5"),
+"unfade": SubResource("Animation_2sf0u")
 }
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_82qex"]

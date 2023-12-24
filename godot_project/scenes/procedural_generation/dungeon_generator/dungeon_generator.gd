@@ -3,10 +3,16 @@ class_name DungeonGenerator extends Node3D
 
 
 @export var rooms: Array[PackedScene] = []
+@export var elevator_room_scene: PackedScene
+@export var spawn_room_scene: PackedScene
+
+var closed_rooms: Array[PackedScene] = []
+var open_rooms: Array[PackedScene] = []
 
 var used_door_markers: Array[Marker3D] = []
 var spawned_rooms: Array[Room] = []
 var room_aabbs: Array[AABB] = []
+var spawned_elevator_room: bool
 
 var rand := RandomNumberGenerator.new()
 
@@ -14,15 +20,39 @@ var rand := RandomNumberGenerator.new()
 
 
 func _ready() -> void:
-	rand.seed = -8246618274731081350
+	for room in rooms:
+		var room_instance: Room = room.instantiate()
+		room_instance.queue_free()
+		
+		if room_instance.door_markers.size() == 1:
+			closed_rooms.push_back(room)
+			continue
+		
+		open_rooms.push_back(room)
+	
+	generate()
+
+
+
+func generate() -> void:
+	spawned_elevator_room = false
+	used_door_markers.clear()
+	spawned_rooms.clear()
+	room_aabbs.clear()
+	
+	rand.randomize()
 	print("seed: ", rand.seed)
+	
+	for child in get_children():
+		remove_child(child)
+		child.queue_free()
+	
 	setup_spawn()
-
-
+	generate_rooms()
 
 
 func setup_spawn() -> void:
-	var spawn_room: SpawnRoom = preload("res://scenes/environment/rooms/spawn_room/spawn_room.tscn").instantiate()
+	var spawn_room: SpawnRoom = spawn_room_scene.instantiate()
 	var local_player: LocalPlayer = preload("res://scenes/entities/local_player/local_player.tscn").instantiate()
 	add_child(spawn_room)
 	save_room(spawn_room)
@@ -31,31 +61,52 @@ func setup_spawn() -> void:
 	add_child(local_player)
 	
 	local_player.global_position = spawn_room.spawn_marker.global_position
-	
+
+
+
+
+func generate_rooms() -> void:
+	var idx: int = -1
 	
 	for room in spawned_rooms:
+		idx += 1
+		
 		for door_marker in room.door_markers:
 			if used_door_markers.has(door_marker):
 				continue
 			
+			if idx > 5 and not spawned_elevator_room:
+				var new_room: Room = elevator_room_scene.instantiate() as Room
+				if try_to_spawn_room(door_marker, new_room):
+					spawned_elevator_room = true
+					continue
+			
 			var new_room: Room = get_rand_room().instantiate() as Room
-			add_child(new_room)
-			
-			var failed: bool = true
-			for new_room_door_marker in new_room.door_markers:
-				if connect_rooms(door_marker, new_room, new_room_door_marker):
-					failed = false
-					break
-			
-			if failed:
-				new_room.queue_free()
+			try_to_spawn_room(door_marker, new_room)
 
+
+
+
+func try_to_spawn_room(door_marker: Marker3D, new_room: Room) -> bool:
+	add_child(new_room)
+	
+	for new_room_door_marker in new_room.door_markers:
+		if connect_rooms(door_marker, new_room, new_room_door_marker):
+			return true
+	
+	new_room.queue_free()
+	return false
 
 
 
 func get_rand_room() -> PackedScene:
-	var idx: int = rand.randi() % rooms.size()
-	return rooms[idx]
+	if not spawned_elevator_room:
+		return open_rooms[rand.randi() % open_rooms.size()]
+	
+	return closed_rooms[rand.randi() % closed_rooms.size()]
+
+
+
 
 
 func save_room(room: Room) -> void:

@@ -7,18 +7,18 @@ class_name DungeonElevator extends Area3D
 
 var time_to_decend: float = 1.5
 var target_pos: float = 0
-var try_to_decend: bool
-var is_decending: bool
+var try_to_descend: bool
+var is_descending: bool
 
 
 
 func _process(delta: float) -> void:
-	if is_decending:
+	if is_descending:
 		return
 	
-	if try_to_decend:
+	if try_to_descend:
 		if time_to_decend <= 0.0:
-			is_decending = true
+			is_descending = true
 			return
 		
 		time_to_decend -= delta
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if is_decending:
+	if is_descending:
 		platform.position.y -= delta * 1.75
 		return
 	

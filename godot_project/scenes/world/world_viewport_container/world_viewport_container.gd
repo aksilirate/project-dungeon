@@ -9,3 +9,6 @@ class_name WorldViewportContainer extends SubViewportContainer
 
 func fade() -> void:
 	animation_player.play("fade")
+
+func unfade() -> void:
+	animation_player.play("unfade")

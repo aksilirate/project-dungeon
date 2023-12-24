@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1p5wg4m6obf3"]
+[gd_scene load_steps=9 format=3 uid="uid://1p5wg4m6obf3"]
 
 [ext_resource type="Script" path="res://scenes/procedural_generation/dungeon_generator/dungeon_generator.gd" id="1_oh8i5"]
 [ext_resource type="PackedScene" uid="uid://bpcggg2piql8g" path="res://scenes/environment/rooms/room_0/room_0.tscn" id="2_bdjxp"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dhgkkf5e8xsh6" path="res://scenes/environment/rooms/room_3/room_3.tscn" id="5_pr7o0"]
 [ext_resource type="PackedScene" uid="uid://cekgrfbiat4o4" path="res://scenes/environment/rooms/room_4/room_4.tscn" id="6_t63gf"]
 [ext_resource type="PackedScene" uid="uid://dfekc2ysx38wc" path="res://scenes/environment/rooms/dungeon_elevator_room/dungeon_elevator_room.tscn" id="7_68dmb"]
+[ext_resource type="PackedScene" uid="uid://d38spo6ybt3y3" path="res://scenes/environment/rooms/spawn_room/spawn_room.tscn" id="8_n2e7u"]
 
 [node name="DungeonGenerator" type="Node3D"]
 script = ExtResource("1_oh8i5")
-rooms = Array[PackedScene]([ExtResource("2_bdjxp"), ExtResource("3_kh31n"), ExtResource("4_7ofb7"), ExtResource("5_pr7o0"), ExtResource("6_t63gf"), ExtResource("7_68dmb")])
+rooms = Array[PackedScene]([ExtResource("2_bdjxp"), ExtResource("3_kh31n"), ExtResource("4_7ofb7"), ExtResource("5_pr7o0"), ExtResource("6_t63gf")])
+elevator_room_scene = ExtResource("7_68dmb")
+spawn_room_scene = ExtResource("8_n2e7u")
