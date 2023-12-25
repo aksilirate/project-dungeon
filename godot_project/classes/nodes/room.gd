@@ -11,7 +11,7 @@ func get_aabb_arr() -> Array[AABB]:
 	var aabb_arr: Array[AABB] = []
 	
 	for child in NodeUtils.get_all_children(self):
-		if child is VisualInstance3D:
+		if child is GeometryInstance3D:
 			var child_aabb: AABB = child.global_transform * child.get_aabb()
 			child_aabb.position = (child_aabb.position * 100).round() / 100
 			child_aabb.size = (child_aabb.size * 100).round() / 100

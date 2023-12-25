@@ -1,21 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dov47s33xbgpd"]
+[gd_scene load_steps=12 format=3 uid="uid://dov47s33xbgpd"]
 
 [ext_resource type="Script" path="res://scenes/environment/parts/dungeon_elevator_platform/dungeon_elevator_platform.gd" id="1_2vhuo"]
 [ext_resource type="ArrayMesh" uid="uid://cw1b3g72gpd2c" path="res://assests/models/dungeon_elevator/dungeon_elevator.obj" id="1_et553"]
-[ext_resource type="Texture2D" uid="uid://bacuw66513p7i" path="res://assests/textures/plank_wood.png" id="2_kbftc"]
-[ext_resource type="Material" uid="uid://bf3y1bb1f6rfa" path="res://assests/materials/plank_wood.tres" id="2_qsrn6"]
 [ext_resource type="Texture2D" uid="uid://beaphrmalm7wb" path="res://assests/textures/rope.png" id="3_snb50"]
+[ext_resource type="Material" uid="uid://bf3y1bb1f6rfa" path="res://assests/materials/soft_wood.tres" id="4_bd1vi"]
 [ext_resource type="Material" uid="uid://bd6wbdqhrinv" path="res://assests/materials/rope.tres" id="4_t78vq"]
 [ext_resource type="Material" uid="uid://dssa8hpx5o8f6" path="res://assests/materials/metal.tres" id="6_xgdoo"]
 [ext_resource type="ArrayMesh" uid="uid://dqee62l6cnpuu" path="res://assests/models/dungeon_elevator/dungeon_elevator_rope.obj" id="7_06yad"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5rwb"]
-albedo_texture = ExtResource("2_kbftc")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3k4yd"]
-albedo_texture = ExtResource("2_kbftc")
-texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brhxf"]
 albedo_texture = ExtResource("3_snb50")
@@ -60,10 +51,10 @@ rope = NodePath("RopeMesh")
 
 [node name="DungeonElevator" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_et553")
-surface_material_override/0 = ExtResource("2_qsrn6")
-surface_material_override/1 = SubResource("StandardMaterial3D_t5rwb")
+surface_material_override/0 = ExtResource("4_bd1vi")
+surface_material_override/1 = ExtResource("4_bd1vi")
 surface_material_override/2 = ExtResource("4_t78vq")
-surface_material_override/3 = SubResource("StandardMaterial3D_3k4yd")
+surface_material_override/3 = ExtResource("4_bd1vi")
 surface_material_override/4 = SubResource("StandardMaterial3D_brhxf")
 surface_material_override/5 = ExtResource("6_xgdoo")
 
