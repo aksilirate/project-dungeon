@@ -6,7 +6,7 @@ class_name LocalPlayer extends CharacterBody3D
 @export var camera: Camera3D
 
 var look_sensitivity: float = 0.1
-var movement_speed: float = 8.5
+var movement_speed: float = 4.5
 
 
 func _ready() -> void:

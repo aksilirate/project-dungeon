@@ -1,6 +1,5 @@
 # Blender 4.0.2
 # www.blender.org
-mtllib dungeon_wall.mtl
 o Plane
 v -3.000000 0.000000 3.000000
 v 3.000000 0.000000 3.000000
