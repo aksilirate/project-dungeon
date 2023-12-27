@@ -1,17 +1,25 @@
 class_name LocalPlayer extends CharacterBody3D
 
 
+@export var right_arm_ik: SkeletonIK3D
 @export var left_arm_ik: SkeletonIK3D
 @export var camera_target: Marker3D
 @export var camera: Camera3D
+@export var arms: Node3D
 
 var look_sensitivity: float = 0.1
 var movement_speed: float = 4.5
+var bob_strength: float = 0.0
+
+
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	right_arm_ik.start()
 	left_arm_ik.start()
+
+
 
 
 
@@ -20,6 +28,13 @@ func _input(event: InputEvent) -> void:
 		rotation_degrees.y -= event.relative.x * look_sensitivity
 		camera.rotation_degrees.x -= event.relative.y * look_sensitivity
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+	
+		arms.rotation.x += event.relative.y * 0.0001
+		arms.rotation.x = clamp(arms.rotation.x, -0.3, 0.3)
+		
+		arms.rotation.y += event.relative.x * 0.0001
+		arms.rotation.y = clamp(arms.rotation.y, -0.3, 0.3)
+
 
 
 
@@ -27,6 +42,13 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	camera.global_position = lerp(camera.global_position, camera_target.global_position, delta * 17.5)
 	camera.rotation_degrees.y = rotation_degrees.y
+	
+	arms.rotation.y = lerp(arms.rotation.y, 0.0, delta * 2.5)
+	arms.rotation.x = lerp(arms.rotation.x, 0.0, delta * 2.5)
+	
+	arms.position.y = (sin(Time.get_ticks_msec() * 0.01) * 0.00075 * bob_strength)
+	
+	bob_strength = lerp(bob_strength, abs(velocity.x) + abs(velocity.z), delta * 7.5)
 
 
 
@@ -40,6 +62,11 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = 10
 	
 	move_and_slide()
+
+
+
+
+
 
 
 
@@ -62,11 +89,15 @@ func get_move_force(input_dir: Vector3) -> Vector3:
 
 
 
+
+
 func get_gravity() -> Vector3:
 	if not is_on_floor():
 		return Vector3(velocity.x, velocity.y - 1, velocity.z)
 	
 	return velocity
+
+
 
 
 
