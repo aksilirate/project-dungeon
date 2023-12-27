@@ -86,6 +86,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0.122729, -0.499596, -0.813297)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("human/Armature/Skeleton3D/LeftArmIK:magnet")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6, 0, 1.64)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("human/Armature/Skeleton3D/RightArmIK:magnet")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-18.13, 0, 0.32)]
+}
 
 [sub_resource type="Animation" id="Animation_4rmh6"]
 resource_name = "duel_wield_idle"
@@ -99,7 +123,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.409337, 2.45649, -1.43228)]
+"values": [Vector3(0.358991, 2.22191, -1.36203)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -123,7 +147,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.163046, -0.493948, -0.793337)]
+"values": [Vector3(0.190219, -0.528946, -0.805885)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -135,7 +159,31 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.266602, -2.78246, 1.63141)]
+"values": [Vector3(-0.0186244, -2.69816, 1.05868)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("human/Armature/Skeleton3D/LeftArmIK:magnet")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6, 0, 1.64)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("human/Armature/Skeleton3D/RightArmIK:magnet")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-18.13, 0, 0.32)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0yckm"]
@@ -198,7 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 0.480224, -0.877146, 0, 0.877146, 0.480224, 
 visible = false
 
 [node name="Sword" type="MeshInstance3D" parent="Camera3D/Arms"]
-transform = Transform3D(0.926307, 0.2786, 0.253653, -0.306798, 0.948524, 0.0785775, -0.218706, -0.150605, 0.9641, 0.165648, -0.729176, -0.778437)
+transform = Transform3D(0.926307, 0.2786, 0.253653, -0.30373, 0.950525, 0.0651762, -0.222947, -0.137414, 0.965098, 0.180337, -0.725426, -0.796953)
 mesh = ExtResource("3_kt3op")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8uxkx")
@@ -219,12 +267,16 @@ bones/9/scale = Vector3(1.00048, 1.00048, 1.00048)
 process_priority = 1
 root_bone = &"upper_arm.l"
 tip_bone = &"fist.l"
+use_magnet = true
+magnet = Vector3(6, 0, 1.64)
 target_node = NodePath("../../../../OffHand")
 
 [node name="RightArmIK" type="SkeletonIK3D" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="1"]
 process_priority = 1
 root_bone = &"upper_arm.r"
 tip_bone = &"fist.r"
+use_magnet = true
+magnet = Vector3(-18.13, 0, 0.32)
 target_node = NodePath("../../../../MainHand")
 
 [node name="body" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="2"]
