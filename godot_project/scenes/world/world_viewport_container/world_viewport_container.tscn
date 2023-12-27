@@ -19,6 +19,8 @@ uniform float vignette_intensity = 0.4;
 uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
 uniform vec4 vignette_rgb : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 
+uniform bool scale_resolution = false;
+uniform int target_resolution_scale = 3;
 
 
 float dithering_pattern(ivec2 fragcoord) {
@@ -75,6 +77,16 @@ void fragment() {
 	vec4 raw = texture(TEXTURE, SCREEN_UV);
 	ivec2 uv = ivec2(FRAGCOORD.xy / float(dither_size));
 	
+	
+	if(scale_resolution){
+		uv = ivec2(FRAGCOORD.xy / float(target_resolution_scale));
+		raw.rgb = texelFetch(TEXTURE, uv * target_resolution_scale, 0).rgb;
+	} else {
+		uv = ivec2(FRAGCOORD.xy);
+		raw.rgb = texelFetch(TEXTURE, uv, 0).rgb;
+	}
+	
+	
 	raw.rgba = mix(vignette_rgb, raw.rgba, vignette(UV));
 	
 	if (enabled == true){
@@ -104,6 +116,8 @@ shader_parameter/dither_size = 1
 shader_parameter/vignette_intensity = 0.3
 shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0.0235294, 0, 1)
+shader_parameter/scale_resolution = true
+shader_parameter/target_resolution_scale = 2
 
 [sub_resource type="Animation" id="Animation_7vwwq"]
 length = 0.001
@@ -192,6 +206,8 @@ libraries = {
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 handle_input_locally = false
+scaling_3d_scale = 0.25
+positional_shadow_atlas_size = 4096
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 

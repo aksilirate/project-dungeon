@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0smrtbndbm4u"]
 
 [ext_resource type="ArrayMesh" uid="uid://cebcvgcpmuh74" path="res://assests/models/ramp.obj" id="1_ry51u"]
-[ext_resource type="Texture2D" uid="uid://cdaj7vsud4p25" path="res://assests/textures/dungeon_floor_0.png" id="2_n521j"]
+[ext_resource type="Texture2D" uid="uid://ch5vmldk27gp0" path="res://assests/textures/dungeon_floor.png" id="2_n521j"]
 [ext_resource type="ArrayMesh" uid="uid://cq15bnsq4mdxe" path="res://assests/models/ramp_collision.obj" id="3_6f4jn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8jh2"]

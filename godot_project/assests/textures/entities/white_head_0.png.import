@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddfg5xp4n7qni"
 path.s3tc="res://.godot/imported/white_head_0.png-0fdadee357d0f8b0dcb3920d460253fd.s3tc.ctex"
+path.etc2="res://.godot/imported/white_head_0.png-0fdadee357d0f8b0dcb3920d460253fd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assests/textures/entities/white_head_0.png"
-dest_files=["res://.godot/imported/white_head_0.png-0fdadee357d0f8b0dcb3920d460253fd.s3tc.ctex"]
+dest_files=["res://.godot/imported/white_head_0.png-0fdadee357d0f8b0dcb3920d460253fd.s3tc.ctex", "res://.godot/imported/white_head_0.png-0fdadee357d0f8b0dcb3920d460253fd.etc2.ctex"]
 
 [params]
 

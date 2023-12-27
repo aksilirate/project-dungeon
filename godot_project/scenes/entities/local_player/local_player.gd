@@ -1,7 +1,7 @@
 class_name LocalPlayer extends CharacterBody3D
 
 
-
+@export var left_arm_ik: SkeletonIK3D
 @export var camera_target: Marker3D
 @export var camera: Camera3D
 
@@ -11,7 +11,7 @@ var movement_speed: float = 4.5
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	left_arm_ik.start()
 
 
 

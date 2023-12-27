@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfekc2ysx38wc"]
+[gd_scene load_steps=14 format=3 uid="uid://dfekc2ysx38wc"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_au1ng"]
 [ext_resource type="PackedScene" uid="uid://cmbuj4m4n30hh" path="res://scenes/environment/parts/dungeon_floor/dungeon_floor.tscn" id="3_2r384"]
@@ -9,34 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://ddfg5xp4n7qni" path="res://assests/textures/entities/white_head_0.png" id="7_1wplj"]
 [ext_resource type="Texture2D" uid="uid://bpg0l3cvxoq6c" path="res://assests/textures/entities/white_skin.png" id="7_72i16"]
 [ext_resource type="PackedScene" uid="uid://bgh3a0toy3w8v" path="res://scenes/environment/parts/torch/torch.tscn" id="8_mr6km"]
+[ext_resource type="Texture2D" uid="uid://dv4xnfl5pb7k1" path="res://assests/textures/entities/underwear.png" id="9_8noqm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ue7x"]
-albedo_texture = ExtResource("7_72i16")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n7v3"]
-albedo_texture = ExtResource("7_72i16")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt7op"]
+diffuse_mode = 2
 albedo_texture = ExtResource("7_72i16")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq5xe"]
+diffuse_mode = 2
 albedo_texture = ExtResource("7_1wplj")
 texture_filter = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6k1v"]
-albedo_texture = ExtResource("7_72i16")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nljr4"]
-albedo_texture = ExtResource("7_72i16")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ash7"]
-albedo_texture = ExtResource("7_72i16")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42iw4"]
-albedo_texture = ExtResource("7_72i16")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqnme"]
-albedo_texture = ExtResource("7_72i16")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyybn"]
+transparency = 1
+diffuse_mode = 2
+albedo_texture = ExtResource("9_8noqm")
+texture_filter = 0
 
 [node name="DungeonElevatorRoom" type="Node3D" node_paths=PackedStringArray("door_markers")]
 script = ExtResource("1_au1ng")
@@ -222,60 +210,73 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
 transform = Transform3D(-0.502309, 0.00408448, -0.864678, -0.00181291, 0.999982, 0.00577676, 0.864686, 0.0044693, -0.502293, -3.92069, -0.007415, -2.62268)
 
 [node name="Skeleton3D" parent="human/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.0052033, -0.70584, -0.00522165, 0.708333)
-bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.70719, 0.0162139, -0.704898, -0.0523303)
+bones/1/rotation = Quaternion(0.707247, 0.015446, -0.704915, -0.0515653)
 bones/1/scale = Vector3(1.00001, 1, 1.00003)
-bones/2/rotation = Quaternion(-0.0307806, -0.00151819, 0.0696562, 0.997095)
-bones/3/rotation = Quaternion(-0.235328, -0.322005, -0.540801, 0.740587)
-bones/4/rotation = Quaternion(0.704701, -0.0160304, 0.707387, -0.0523875)
+bones/2/rotation = Quaternion(-0.0307807, -0.0015182, 0.0696562, 0.997095)
+bones/3/rotation = Quaternion(-0.235327, -0.322005, -0.540801, 0.740586)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.704757, -0.0152651, 0.707403, -0.0516197)
 bones/4/scale = Vector3(1.00001, 1, 1.00003)
-bones/5/rotation = Quaternion(-0.0307805, 0.00151811, -0.0696562, 0.997095)
+bones/5/rotation = Quaternion(-0.0307807, 0.00151812, -0.0696562, 0.997095)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.0498206, -5.61401e-10, -0.000175647, 0.998758)
-bones/8/rotation = Quaternion(0.0459098, 0.000370684, 0.000179076, 0.998946)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.586016, 0.52648, -0.436834, 0.434259)
-bones/9/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.235328, 0.322005, 0.540801, 0.740586)
+bones/7/rotation = Quaternion(-0.0618153, -0.00996621, 0.000399343, 0.998038)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.0568234, 0.0103398, -0.000345819, 0.998331)
 bones/10/rotation = Quaternion(-0.0323975, -0.0522727, -0.0518881, 0.996758)
 bones/11/rotation = Quaternion(0.121849, -0.0679752, -0.0109762, 0.990157)
-bones/11/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(-0.0323974, 0.0522758, 0.0518882, 0.996757)
-bones/13/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.59348, -0.528471, 0.427211, 0.431267)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.0323974, 0.0522757, 0.0518882, 0.996757)
 bones/14/rotation = Quaternion(0.121849, 0.0679763, 0.0109763, 0.990157)
 
 [node name="body" parent="human/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.32831e-10, 1, 0, 2.98023e-08, -6.98492e-10, 1, 0, 0, 0)
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
 [node name="feet" parent="human/Armature/Skeleton3D" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_8n7v3")
+transform = Transform3D(1, 2.32831e-10, 8.9407e-08, 9.31323e-10, 1, 4.65661e-10, 8.9407e-08, -1.86265e-09, 1, 0, 0, 0)
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
 [node name="fist" parent="human/Armature/Skeleton3D" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_gt7op")
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
 [node name="head" parent="human/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 1.16415e-09, 1.19209e-07, 4.65661e-09, 1, 6.98492e-10, 1.49012e-07, -5.58794e-09, 1, -0.00338316, 0.00705964, -0.00182438)
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_lq5xe")
 
 [node name="lower_arm" parent="human/Armature/Skeleton3D" index="4"]
-surface_material_override/0 = SubResource("StandardMaterial3D_i6k1v")
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
 [node name="lower_leg" parent="human/Armature/Skeleton3D" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_nljr4")
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
 [node name="root" parent="human/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 4.65661e-10, 5.96046e-08, 4.65661e-10, 1, 2.32831e-10, 5.96046e-08, -1.16415e-09, 1, 0, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_4ash7")
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
-[node name="upper_arm" parent="human/Armature/Skeleton3D" index="7"]
-surface_material_override/0 = SubResource("StandardMaterial3D_42iw4")
+[node name="underwear" parent="human/Armature/Skeleton3D" index="7"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_qyybn")
 
-[node name="upper_leg" parent="human/Armature/Skeleton3D" index="8"]
-surface_material_override/0 = SubResource("StandardMaterial3D_lqnme")
+[node name="upper_arm" parent="human/Armature/Skeleton3D" index="8"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.32831e-10, 1, 0, 2.98023e-08, -6.98492e-10, 1, 0, 0, 0)
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
+
+[node name="upper_leg" parent="human/Armature/Skeleton3D" index="9"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.32831e-10, 1, 0, 2.98023e-08, -6.98492e-10, 1, 0, 0, 0)
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
 [node name="Torch" parent="." instance=ExtResource("8_mr6km")]
-transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -4.73031, 1.60063, -3.1206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73031, 1.60063, -3.1206)
 
 [editable path="human"]

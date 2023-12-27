@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpg0l3cvxoq6c"
-path.s3tc="res://.godot/imported/white_skin.png-b728be220fa8e9fa75a0653a82990b42.s3tc.ctex"
-path.etc2="res://.godot/imported/white_skin.png-b728be220fa8e9fa75a0653a82990b42.etc2.ctex"
+uid="uid://dv4xnfl5pb7k1"
+path.s3tc="res://.godot/imported/underwear.png-f7a20698d31ae0342fbb619511ae3688.s3tc.ctex"
+path.etc2="res://.godot/imported/underwear.png-f7a20698d31ae0342fbb619511ae3688.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assests/textures/entities/white_skin.png"
-dest_files=["res://.godot/imported/white_skin.png-b728be220fa8e9fa75a0653a82990b42.s3tc.ctex", "res://.godot/imported/white_skin.png-b728be220fa8e9fa75a0653a82990b42.etc2.ctex"]
+source_file="res://assests/textures/entities/underwear.png"
+dest_files=["res://.godot/imported/underwear.png-f7a20698d31ae0342fbb619511ae3688.s3tc.ctex", "res://.godot/imported/underwear.png-f7a20698d31ae0342fbb619511ae3688.etc2.ctex"]
 
 [params]
 
