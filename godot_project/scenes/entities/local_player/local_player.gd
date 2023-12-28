@@ -1,6 +1,7 @@
 class_name LocalPlayer extends CharacterBody3D
 
 
+@export var arms_animation_player: AnimationPlayer
 @export var right_arm_ik: SkeletonIK3D
 @export var left_arm_ik: SkeletonIK3D
 @export var camera_target: Marker3D
@@ -34,7 +35,11 @@ func _input(event: InputEvent) -> void:
 		
 		arms.rotation.y += event.relative.x * 0.0001
 		arms.rotation.y = clamp(arms.rotation.y, -0.3, 0.3)
-
+	
+	if event is InputEventMouseButton:
+		if Input.is_action_just_pressed("attack"):
+			arms_animation_player.stop()
+			arms_animation_player.play("duel_wield_attack")
 
 
 
@@ -46,9 +51,12 @@ func _process(delta: float) -> void:
 	arms.rotation.y = lerp(arms.rotation.y, 0.0, delta * 2.5)
 	arms.rotation.x = lerp(arms.rotation.x, 0.0, delta * 2.5)
 	
-	arms.position.y = (sin(Time.get_ticks_msec() * 0.01) * 0.00075 * bob_strength)
-	
-	bob_strength = lerp(bob_strength, abs(velocity.x) + abs(velocity.z), delta * 7.5)
+	if abs(velocity.x) + abs(velocity.z):
+		if not arms_animation_player.is_playing():
+			arms_animation_player.play("bob")
+	#arms.position.y = (sin(Time.get_ticks_msec() * 0.01) * 0.00075 * bob_strength)
+	#
+	#bob_strength = lerp(bob_strength, abs(velocity.x) + abs(velocity.z), delta * 7.5)
 
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3hho37n31nkx"]
+[gd_scene load_steps=24 format=3 uid="uid://d3hho37n31nkx"]
 
 [ext_resource type="Script" path="res://scenes/entities/local_player/local_player.gd" id="1_n7sfx"]
 [ext_resource type="PackedScene" uid="uid://bgh3a0toy3w8v" path="res://scenes/environment/parts/torch/torch.tscn" id="2_ks500"]
@@ -14,26 +14,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("OffHand:rotation")
+tracks/0/path = NodePath("OffHand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.32296, 5.38976e-07, -0.176278)]
+"values": [Vector3(-0.579331, -0.479456, -0.806183)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("OffHand:position")
+tracks/1/path = NodePath("OffHand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.579331, -0.479456, -0.806183)]
+"values": [Vector3(-1.32296, 5.38976e-07, -0.176278)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -83,6 +83,131 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(-18.13, 0, 0.32)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7jjyd"]
+resource_name = "duel_wield_attack"
+length = 1.75
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainHand:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.575, 1.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.358991, 1.78111, -1.36203), Vector3(-0.167538, 1.61309, 0.0572567), Vector3(-0.167538, 1.61309, 0.0572567), Vector3(0.779979, 1.47065, -1.72741), Vector3(0.358991, 1.78111, -1.36203)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainHand:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.575, 1, 1.025),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.287818, -0.425682, -0.775522), Vector3(0.272691, -0.155579, -0.182586), Vector3(0.272691, -0.155579, -0.182586), Vector3(0.299495, -0.145496, -0.544989), Vector3(0.287818, -0.425682, -0.775522), Vector3(0.287818, -0.425682, -0.775522)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OffHand:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.575, 1.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.416187, 0.970943, -1.81573), Vector3(0.578824, 1.67906, -0.0605027), Vector3(0.578824, 1.67906, -0.0605027), Vector3(0.467865, 0.613186, -2.38767), Vector3(0.416187, 0.970943, -1.81573)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OffHand:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.575, 1, 1.025),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.20623, -0.502455, -0.785516), Vector3(0.221357, -0.151844, -0.282591), Vector3(0.221357, -0.151844, -0.282591), Vector3(0.194553, -0.185961, -0.545083), Vector3(0.20623, -0.502455, -0.785516), Vector3(0.20623, -0.502455, -0.785516)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("human/Armature/Skeleton3D/LeftArmIK:magnet")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.435, 0, 1.03), Vector3(5.435, 0, 1.03)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("human/Armature/Skeleton3D/RightArmIK:magnet")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-18.13, 0, 0.32), Vector3(-18.13, 0, 0.32)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.625, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.75755, -1.23046), Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.575, 0.775, 1.075, 1.45, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.002, 0.015), Vector3(0, 0.00616455, 0), Vector3(0, 0.00616455, 0), Vector3(0, 0, 0), Vector3(0, -0.0949585, 0), Vector3(0, -0.0949585, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4rmh6"]
 resource_name = "duel_wield_idle"
@@ -113,26 +238,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("OffHand:position")
+tracks/2/path = NodePath("OffHand:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.20623, -0.502455, -0.785516)]
+"values": [Vector3(0.416187, 0.970943, -1.81573)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("OffHand:rotation")
+tracks/3/path = NodePath("OffHand:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.416187, 0.970943, -1.81573)]
+"values": [Vector3(0.20623, -0.502455, -0.785516)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -164,34 +289,83 @@ resource_name = "off_hand_idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("OffHand:rotation")
+tracks/0/path = NodePath("OffHand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.32296, 5.38976e-07, -0.176278)]
+"values": [Vector3(-0.579331, -0.479456, -0.806183)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("OffHand:position")
+tracks/1/path = NodePath("OffHand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.579331, -0.479456, -0.806183)]
+"values": [Vector3(-1.32296, 5.38976e-07, -0.176278)]
+}
+
+[sub_resource type="Animation" id="Animation_o5nmu"]
+resource_name = "bob"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.005, 0), Vector3(0, 0, 0), Vector3(0, -0.005, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0yckm"]
 _data = {
 "RESET": SubResource("Animation_l7lwu"),
+"bob": SubResource("Animation_o5nmu"),
+"duel_wield_attack": SubResource("Animation_7jjyd"),
 "duel_wield_idle": SubResource("Animation_4rmh6"),
 "off_hand_idle": SubResource("Animation_hfbcn")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4bp1"]
+animation = &"bob"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1pio3"]
+animation = &"duel_wield_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d5y5u"]
+animation = &"duel_wield_idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_5i7uf"]
+filter_enabled = true
+filters = [".:position"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_qv4nl"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_oam2j"]
+graph_offset = Vector2(-549.503, 64.6903)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_d5y5u")
+nodes/Animation/position = Vector2(-260, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_d4bp1")
+"nodes/Animation 2/position" = Vector2(20, 400)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_1pio3")
+"nodes/Animation 3/position" = Vector2(-260, 320)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_5i7uf")
+nodes/Blend2/position = Vector2(220, 140)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_qv4nl")
+nodes/OneShot/position = Vector2(20, 140)
+nodes/output/position = Vector2(420, 140)
+node_connections = [&"Blend2", 0, &"OneShot", &"Blend2", 1, &"Animation 2", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 3", &"output", 0, &"Blend2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uxkx"]
 albedo_texture = ExtResource("4_65ufo")
@@ -209,8 +383,9 @@ albedo_texture = ExtResource("4_ut4n3")
 diffuse_mode = 2
 albedo_texture = ExtResource("4_ut4n3")
 
-[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("right_arm_ik", "left_arm_ik", "camera_target", "camera", "arms")]
+[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("arms_animation_player", "right_arm_ik", "left_arm_ik", "camera_target", "camera", "arms")]
 script = ExtResource("1_n7sfx")
+arms_animation_player = NodePath("Camera3D/AnimationPlayer")
 right_arm_ik = NodePath("Camera3D/Arms/human/Armature/Skeleton3D/RightArmIK")
 left_arm_ik = NodePath("Camera3D/Arms/human/Armature/Skeleton3D/LeftArmIK")
 camera_target = NodePath("CameraTarget")
@@ -229,30 +404,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 top_level = true
 near = 0.001
 
-[node name="Arms" type="Node3D" parent="Camera3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.00478093, 0)
+[node name="AnimationTree" type="AnimationTree" parent="Camera3D"]
+root_node = NodePath("../Arms")
+libraries = {
+"": SubResource("AnimationLibrary_0yckm")
+}
+tree_root = SubResource("AnimationNodeBlendTree_oam2j")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Blend2/blend_amount = 1.0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Arms"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+root_node = NodePath("../Arms")
 libraries = {
 "": SubResource("AnimationLibrary_0yckm")
 }
 autoplay = "duel_wield_idle"
 
+[node name="Arms" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
 [node name="OffHand" type="Node3D" parent="Camera3D/Arms"]
-transform = Transform3D(0.984504, 0.175366, 1.32215e-07, -0.0430186, 0.241506, 0.969445, 0.170008, -0.954423, 0.245307, -0.579331, -0.479456, -0.806183)
+transform = Transform3D(0.984503, 0.175366, 1.32215e-07, -0.0430186, 0.241506, 0.969445, 0.170008, -0.954422, 0.245307, -0.579331, -0.479456, -0.806183)
 
 [node name="Torch" parent="Camera3D/Arms/OffHand" instance=ExtResource("2_ks500")]
 transform = Transform3D(1, 0, 0, 0, 0.480224, -0.877146, 0, 0.877146, 0.480224, 0.025, 0.01, -0.05)
 visible = false
 
-[node name="Sword" type="MeshInstance3D" parent="Camera3D/Arms"]
-transform = Transform3D(0.926307, 0.2786, 0.253653, -0.30373, 0.950525, 0.0651762, -0.222947, -0.137414, 0.965098, 0.18576, -0.730822, -0.796953)
-mesh = ExtResource("3_kt3op")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8uxkx")
-
 [node name="MainHand" type="Node3D" parent="Camera3D/Arms"]
-transform = Transform3D(0.404505, 5.35697e-06, -0.914536, 0.873302, -0.296889, 0.386265, -0.271513, -0.954913, -0.120098, 0.122729, -0.499596, -0.813297)
+transform = Transform3D(0.404505, 5.35696e-06, -0.914536, 0.873302, -0.296888, 0.386265, -0.271513, -0.954911, -0.120098, 0.122729, -0.499596, -0.813297)
+
+[node name="Sword" type="MeshInstance3D" parent="Camera3D/Arms/MainHand"]
+transform = Transform3D(-0.0440524, -0.958316, -0.282295, 0.0345326, 0.280937, -0.959104, 0.998433, -0.0519968, 0.020716, 0.321012, -0.0248046, 0.0179467)
+mesh = ExtResource("3_kt3op")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8uxkx")
 
 [node name="human" parent="Camera3D/Arms" instance=ExtResource("3_6fkav")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.01057, -0.307382)
