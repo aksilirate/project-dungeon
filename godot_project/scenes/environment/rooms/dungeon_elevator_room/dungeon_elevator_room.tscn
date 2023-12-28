@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfekc2ysx38wc"]
+[gd_scene load_steps=18 format=3 uid="uid://dfekc2ysx38wc"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_au1ng"]
 [ext_resource type="PackedScene" uid="uid://cmbuj4m4n30hh" path="res://scenes/environment/parts/dungeon_floor/dungeon_floor.tscn" id="3_2r384"]
@@ -7,17 +7,30 @@
 [ext_resource type="PackedScene" uid="uid://usqstx158yjp" path="res://scenes/environment/parts/dungeon_elevator/dungeon_elevator.tscn" id="5_geifn"]
 [ext_resource type="PackedScene" uid="uid://begoxjsmmiks8" path="res://assests/models/human.glb" id="6_upve1"]
 [ext_resource type="Texture2D" uid="uid://ddfg5xp4n7qni" path="res://assests/textures/entities/white_head_0.png" id="7_1wplj"]
+[ext_resource type="Texture2D" uid="uid://4pm4ncu2v3u6" path="res://assests/textures/entities/white_chest_0.png" id="7_5hal2"]
 [ext_resource type="Texture2D" uid="uid://bpg0l3cvxoq6c" path="res://assests/textures/entities/white_skin.png" id="7_72i16"]
 [ext_resource type="PackedScene" uid="uid://bgh3a0toy3w8v" path="res://scenes/environment/parts/torch/torch.tscn" id="8_mr6km"]
 [ext_resource type="Texture2D" uid="uid://dv4xnfl5pb7k1" path="res://assests/textures/entities/underwear.png" id="9_8noqm"]
+[ext_resource type="Texture2D" uid="uid://1f3agrnbyvm3" path="res://assests/textures/entities/white_root_0.png" id="10_2l3jp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8124"]
+diffuse_mode = 2
+albedo_texture = ExtResource("7_5hal2")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ue7x"]
 diffuse_mode = 2
 albedo_texture = ExtResource("7_72i16")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq5xe"]
 diffuse_mode = 2
 albedo_texture = ExtResource("7_1wplj")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7nns"]
+diffuse_mode = 2
+albedo_texture = ExtResource("10_2l3jp")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyybn"]
@@ -231,9 +244,9 @@ bones/13/rotation = Quaternion(-0.0323974, 0.0522757, 0.0518882, 0.996757)
 bones/14/rotation = Quaternion(0.121849, 0.0679763, 0.0109763, 0.990157)
 
 [node name="body" parent="human/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.32831e-10, 1, 0, 2.98023e-08, -6.98492e-10, 1, 0, 0, 0)
+transform = Transform3D(1, 2.32831e-10, -8.9407e-08, 2.32831e-10, 1, 2.32831e-09, 2.98023e-08, -4.65661e-10, 1, 0, 0, 0)
 cast_shadow = 0
-surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
+surface_material_override/0 = SubResource("StandardMaterial3D_q8124")
 
 [node name="feet" parent="human/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 2.32831e-10, 8.9407e-08, 9.31323e-10, 1, 4.65661e-10, 8.9407e-08, -1.86265e-09, 1, 0, 0, 0)
@@ -260,7 +273,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 [node name="root" parent="human/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 4.65661e-10, 5.96046e-08, 4.65661e-10, 1, 2.32831e-10, 5.96046e-08, -1.16415e-09, 1, 0, 0, 0)
 cast_shadow = 0
-surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
+surface_material_override/0 = SubResource("StandardMaterial3D_e7nns")
 
 [node name="underwear" parent="human/Armature/Skeleton3D" index="7"]
 cast_shadow = 0
