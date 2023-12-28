@@ -9,33 +9,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5tus"]
 
-[sub_resource type="Animation" id="Animation_hfbcn"]
-resource_name = "off_hand_idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OffHand:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.32296, 5.38976e-07, -0.176278)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OffHand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.579331, -0.479456, -0.806183)]
-}
-
 [sub_resource type="Animation" id="Animation_l7lwu"]
 length = 0.001
 tracks/0/type = "value"
@@ -123,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.358991, 2.22191, -1.36203)]
+"values": [Vector3(0.358991, 1.78111, -1.36203)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -135,7 +108,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.31182, -0.419369, -0.786773)]
+"values": [Vector3(0.287818, -0.425682, -0.775522)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -147,7 +120,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.190219, -0.528946, -0.805885)]
+"values": [Vector3(0.20623, -0.502455, -0.785516)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -159,7 +132,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.0186244, -2.69816, 1.05868)]
+"values": [Vector3(0.416187, 0.970943, -1.81573)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -171,7 +144,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(6, 0, 1.64)]
+"values": [Vector3(5.435, 0, 1.03)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -184,6 +157,33 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-18.13, 0, 0.32)]
+}
+
+[sub_resource type="Animation" id="Animation_hfbcn"]
+resource_name = "off_hand_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OffHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.32296, 5.38976e-07, -0.176278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OffHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.579331, -0.479456, -0.806183)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0yckm"]
@@ -239,20 +239,20 @@ libraries = {
 autoplay = "duel_wield_idle"
 
 [node name="OffHand" type="Node3D" parent="Camera3D/Arms"]
-transform = Transform3D(0.984503, 0.175366, 1.32215e-07, -0.0430188, 0.241506, 0.969445, 0.170008, -0.954422, 0.245307, -0.579331, -0.479456, -0.806183)
+transform = Transform3D(0.984504, 0.175366, 1.32215e-07, -0.0430186, 0.241506, 0.969445, 0.170008, -0.954423, 0.245307, -0.579331, -0.479456, -0.806183)
 
 [node name="Torch" parent="Camera3D/Arms/OffHand" instance=ExtResource("2_ks500")]
 transform = Transform3D(1, 0, 0, 0, 0.480224, -0.877146, 0, 0.877146, 0.480224, 0.025, 0.01, -0.05)
 visible = false
 
 [node name="Sword" type="MeshInstance3D" parent="Camera3D/Arms"]
-transform = Transform3D(0.926307, 0.2786, 0.253653, -0.30373, 0.950525, 0.0651762, -0.222947, -0.137414, 0.965098, 0.180337, -0.725426, -0.796953)
+transform = Transform3D(0.926307, 0.2786, 0.253653, -0.30373, 0.950525, 0.0651762, -0.222947, -0.137414, 0.965098, 0.18576, -0.730822, -0.796953)
 mesh = ExtResource("3_kt3op")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8uxkx")
 
 [node name="MainHand" type="Node3D" parent="Camera3D/Arms"]
-transform = Transform3D(0.404503, 0, -0.914536, 0.873301, -0.296892, 0.386265, -0.271518, -0.954912, -0.120094, 0.122729, -0.499596, -0.813297)
+transform = Transform3D(0.404505, 5.35697e-06, -0.914536, 0.873302, -0.296889, 0.386265, -0.271513, -0.954913, -0.120098, 0.122729, -0.499596, -0.813297)
 
 [node name="human" parent="Camera3D/Arms" instance=ExtResource("3_6fkav")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.01057, -0.307382)
