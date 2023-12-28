@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3hho37n31nkx"]
+[gd_scene load_steps=19 format=3 uid="uid://d3hho37n31nkx"]
 
 [ext_resource type="Script" path="res://scenes/entities/local_player/local_player.gd" id="1_n7sfx"]
 [ext_resource type="PackedScene" uid="uid://bgh3a0toy3w8v" path="res://scenes/environment/parts/torch/torch.tscn" id="2_ks500"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dqatpefhpcejq" path="res://assests/models/sword.obj" id="3_kt3op"]
 [ext_resource type="Texture2D" uid="uid://clki5xlvrkxnm" path="res://assests/textures/sword.png" id="4_65ufo"]
 [ext_resource type="Texture2D" uid="uid://bpg0l3cvxoq6c" path="res://assests/textures/entities/white_skin.png" id="4_ut4n3"]
+[ext_resource type="Texture2D" uid="uid://cja8wk1vnwwj5" path="res://assests/textures/ui/crosshair.svg" id="7_r88i8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5tus"]
 
@@ -337,36 +338,6 @@ _data = {
 "off_hand_idle": SubResource("Animation_hfbcn")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4bp1"]
-animation = &"bob"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1pio3"]
-animation = &"duel_wield_attack"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d5y5u"]
-animation = &"duel_wield_idle"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_5i7uf"]
-filter_enabled = true
-filters = [".:position"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_qv4nl"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_oam2j"]
-graph_offset = Vector2(-549.503, 64.6903)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_d5y5u")
-nodes/Animation/position = Vector2(-260, 140)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_d4bp1")
-"nodes/Animation 2/position" = Vector2(20, 400)
-"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_1pio3")
-"nodes/Animation 3/position" = Vector2(-260, 320)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_5i7uf")
-nodes/Blend2/position = Vector2(220, 140)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_qv4nl")
-nodes/OneShot/position = Vector2(20, 140)
-nodes/output/position = Vector2(420, 140)
-node_connections = [&"Blend2", 0, &"OneShot", &"Blend2", 1, &"Animation 2", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 3", &"output", 0, &"Blend2"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uxkx"]
 albedo_texture = ExtResource("4_65ufo")
 texture_filter = 0
@@ -383,14 +354,14 @@ albedo_texture = ExtResource("4_ut4n3")
 diffuse_mode = 2
 albedo_texture = ExtResource("4_ut4n3")
 
-[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("arms_animation_player", "right_arm_ik", "left_arm_ik", "camera_target", "camera", "arms")]
+[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("arms_animation_player", "right_arm_ik", "left_arm_ik", "camera_target", "arms_offset", "camera")]
 script = ExtResource("1_n7sfx")
 arms_animation_player = NodePath("Camera3D/AnimationPlayer")
-right_arm_ik = NodePath("Camera3D/Arms/human/Armature/Skeleton3D/RightArmIK")
-left_arm_ik = NodePath("Camera3D/Arms/human/Armature/Skeleton3D/LeftArmIK")
+right_arm_ik = NodePath("Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D/RightArmIK")
+left_arm_ik = NodePath("Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D/LeftArmIK")
 camera_target = NodePath("CameraTarget")
+arms_offset = NodePath("Camera3D/ArmsOffset")
 camera = NodePath("Camera3D")
-arms = NodePath("Camera3D/Arms")
 
 [node name="CameraTarget" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -404,54 +375,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 top_level = true
 near = 0.001
 
-[node name="AnimationTree" type="AnimationTree" parent="Camera3D"]
-root_node = NodePath("../Arms")
-libraries = {
-"": SubResource("AnimationLibrary_0yckm")
-}
-tree_root = SubResource("AnimationNodeBlendTree_oam2j")
-anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 1.0
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
-root_node = NodePath("../Arms")
+root_node = NodePath("../ArmsOffset/Arms")
 libraries = {
 "": SubResource("AnimationLibrary_0yckm")
 }
 autoplay = "duel_wield_idle"
 
-[node name="Arms" type="Node3D" parent="Camera3D"]
+[node name="ArmsOffset" type="Node3D" parent="Camera3D"]
+
+[node name="Arms" type="Node3D" parent="Camera3D/ArmsOffset"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
-[node name="OffHand" type="Node3D" parent="Camera3D/Arms"]
+[node name="OffHand" type="Node3D" parent="Camera3D/ArmsOffset/Arms"]
 transform = Transform3D(0.984503, 0.175366, 1.32215e-07, -0.0430186, 0.241506, 0.969445, 0.170008, -0.954422, 0.245307, -0.579331, -0.479456, -0.806183)
 
-[node name="Torch" parent="Camera3D/Arms/OffHand" instance=ExtResource("2_ks500")]
+[node name="Torch" parent="Camera3D/ArmsOffset/Arms/OffHand" instance=ExtResource("2_ks500")]
 transform = Transform3D(1, 0, 0, 0, 0.480224, -0.877146, 0, 0.877146, 0.480224, 0.025, 0.01, -0.05)
 visible = false
 
-[node name="MainHand" type="Node3D" parent="Camera3D/Arms"]
+[node name="MainHand" type="Node3D" parent="Camera3D/ArmsOffset/Arms"]
 transform = Transform3D(0.404505, 5.35696e-06, -0.914536, 0.873302, -0.296888, 0.386265, -0.271513, -0.954911, -0.120098, 0.122729, -0.499596, -0.813297)
 
-[node name="Sword" type="MeshInstance3D" parent="Camera3D/Arms/MainHand"]
+[node name="Sword" type="MeshInstance3D" parent="Camera3D/ArmsOffset/Arms/MainHand"]
 transform = Transform3D(-0.0440524, -0.958316, -0.282295, 0.0345326, 0.280937, -0.959104, 0.998433, -0.0519968, 0.020716, 0.321012, -0.0248046, 0.0179467)
 mesh = ExtResource("3_kt3op")
-skeleton = NodePath("../../../..")
+skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8uxkx")
 
-[node name="human" parent="Camera3D/Arms" instance=ExtResource("3_6fkav")]
+[node name="human" parent="Camera3D/ArmsOffset/Arms" instance=ExtResource("3_6fkav")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.01057, -0.307382)
 
-[node name="Armature" parent="Camera3D/Arms/human" index="0"]
+[node name="Armature" parent="Camera3D/ArmsOffset/Arms/human" index="0"]
 transform = Transform3D(0.492171, 0, 1.77636e-14, 0, 0.492171, 0, -1.77636e-14, 0, 0.492171, 0.116383, -0.153883, 5.08727e-09)
 
-[node name="Skeleton3D" parent="Camera3D/Arms/human/Armature" index="0"]
+[node name="Skeleton3D" parent="Camera3D/ArmsOffset/Arms/human/Armature" index="0"]
 bones/9/scale = Vector3(1.00048, 1.00048, 1.00048)
 
-[node name="LeftArmIK" type="SkeletonIK3D" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="0"]
+[node name="LeftArmIK" type="SkeletonIK3D" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="0"]
 process_priority = 1
 root_bone = &"upper_arm.l"
 tip_bone = &"fist.l"
@@ -459,7 +420,7 @@ use_magnet = true
 magnet = Vector3(6, 0, 1.64)
 target_node = NodePath("../../../../OffHand")
 
-[node name="RightArmIK" type="SkeletonIK3D" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="1"]
+[node name="RightArmIK" type="SkeletonIK3D" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="1"]
 process_priority = 1
 root_bone = &"upper_arm.r"
 tip_bone = &"fist.r"
@@ -467,34 +428,34 @@ use_magnet = true
 magnet = Vector3(-18.13, 0, 0.32)
 target_node = NodePath("../../../../MainHand")
 
-[node name="body" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="2"]
+[node name="body" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="2"]
 visible = false
 
-[node name="feet" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="3"]
+[node name="feet" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="3"]
 visible = false
 
-[node name="fist" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="4"]
+[node name="fist" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="4"]
 surface_material_override/0 = SubResource("StandardMaterial3D_q5d76")
 
-[node name="head" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="5"]
+[node name="head" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="5"]
 visible = false
 
-[node name="lower_arm" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="6"]
+[node name="lower_arm" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="6"]
 surface_material_override/0 = SubResource("StandardMaterial3D_aj5ba")
 
-[node name="lower_leg" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="7"]
+[node name="lower_leg" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="7"]
 visible = false
 
-[node name="root" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="8"]
+[node name="root" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="8"]
 visible = false
 
-[node name="underwear" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="9"]
+[node name="underwear" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="9"]
 visible = false
 
-[node name="upper_arm" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="10"]
+[node name="upper_arm" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="10"]
 surface_material_override/0 = SubResource("StandardMaterial3D_vyd6s")
 
-[node name="upper_leg" parent="Camera3D/Arms/human/Armature/Skeleton3D" index="11"]
+[node name="upper_leg" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="11"]
 visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
@@ -504,4 +465,22 @@ shadow_bias = 0.0
 omni_range = 10.0
 omni_attenuation = 0.5
 
-[editable path="Camera3D/Arms/human"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -1.5
+offset_right = 1.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_r88i8")
+
+[editable path="Camera3D/ArmsOffset/Arms/human"]
