@@ -354,12 +354,14 @@ albedo_texture = ExtResource("4_ut4n3")
 diffuse_mode = 2
 albedo_texture = ExtResource("4_ut4n3")
 
-[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("arms_animation_player", "right_arm_ik", "left_arm_ik", "camera_target", "arms_offset", "camera")]
+[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("arms_animation_player", "crosshair_texture_rect", "right_arm_ik", "left_arm_ik", "camera_target", "view_raycast", "arms_offset", "camera")]
 script = ExtResource("1_n7sfx")
 arms_animation_player = NodePath("Camera3D/AnimationPlayer")
+crosshair_texture_rect = NodePath("CanvasLayer/CrosshairTextureRect")
 right_arm_ik = NodePath("Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D/RightArmIK")
 left_arm_ik = NodePath("Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D/LeftArmIK")
 camera_target = NodePath("CameraTarget")
+view_raycast = NodePath("Camera3D/ViewRayCast")
 arms_offset = NodePath("Camera3D/ArmsOffset")
 camera = NodePath("Camera3D")
 
@@ -465,10 +467,13 @@ shadow_bias = 0.0
 omni_range = 10.0
 omni_attenuation = 0.5
 
+[node name="ViewRayCast" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -4)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="CrosshairTextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

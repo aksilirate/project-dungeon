@@ -2,9 +2,11 @@ class_name LocalPlayer extends CharacterBody3D
 
 
 @export var arms_animation_player: AnimationPlayer
+@export var crosshair_texture_rect: TextureRect
 @export var right_arm_ik: SkeletonIK3D
 @export var left_arm_ik: SkeletonIK3D
 @export var camera_target: Marker3D
+@export var view_raycast: RayCast3D
 @export var arms_offset: Node3D
 @export var camera: Camera3D
 
@@ -17,6 +19,7 @@ var bob_strength: float = 0.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	view_raycast.add_exception(self)
 	right_arm_ik.start()
 	left_arm_ik.start()
 
@@ -27,8 +30,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * look_sensitivity
-		camera.rotation_degrees.x -= event.relative.y * look_sensitivity
-		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+		camera_target.rotation_degrees.x -= event.relative.y * look_sensitivity
+		camera_target.rotation.x = clamp(camera_target.rotation.x, -PI/2, PI/2)
 	
 		arms_offset.rotation.x += event.relative.y * 0.0001
 		arms_offset.rotation.x = clamp(arms_offset.rotation.x, -0.3, 0.3)
@@ -45,9 +48,6 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	camera.global_position = lerp(camera.global_position, camera_target.global_position, delta * 17.5)
-	camera.rotation_degrees.y = rotation_degrees.y
-	
 	arms_offset.rotation.y = lerp(arms_offset.rotation.y, 0.0, delta * 2.5)
 	arms_offset.rotation.x = lerp(arms_offset.rotation.x, 0.0, delta * 2.5)
 	
@@ -57,7 +57,15 @@ func _process(delta: float) -> void:
 
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	process_camera_transform(delta)
+	process_movement()
+	
+	process_crosshair()
+
+
+
+func process_movement() -> void:
 	var input_dir: Vector3 = get_input_dir()
 	velocity = get_move_force(input_dir)
 	velocity = get_gravity()
@@ -69,6 +77,27 @@ func _physics_process(_delta: float) -> void:
 
 
 
+
+func process_camera_transform(delta: float) -> void:
+	camera.global_position = lerp(camera.global_position, camera_target.global_position, delta * 17.5)
+	camera.rotation_degrees = camera_target.rotation_degrees
+	camera.rotation_degrees.y = rotation_degrees.y
+
+
+
+
+func process_crosshair() -> void:
+	crosshair_texture_rect.position = get_viewport().size / 2
+	crosshair_texture_rect.modulate = Color.WHITE
+	view_raycast.force_raycast_update()
+	
+	if view_raycast.is_colliding():
+		var collision_point: Vector3 = view_raycast.get_collision_point()
+		if camera.is_position_behind(collision_point):
+			return
+		
+		crosshair_texture_rect.position = camera.unproject_position(collision_point)
+		crosshair_texture_rect.modulate = Color.RED
 
 
 
