@@ -31,9 +31,17 @@ func process_local_player() -> void:
 			if local_player.camera.is_position_behind(grim.global_position):
 				continue
 			
+			var grim_pos = grim.global_position
+			if local_player.view_raycast.get_collider() == grim:
+				grim_pos = local_player.view_raycast.get_collision_point()
+			
 			var distance: float = local_player.camera.unproject_position(grim.global_position).distance_to(center_pos)
-			if distance < 400:
-				local_player.target = grim
+			if distance < 500:
+				closest_grim = grim
+		
+		local_player.target = closest_grim
+
+
 
 
 
