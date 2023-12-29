@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4pm4ncu2v3u6"
-path.s3tc="res://.godot/imported/white_chest_0.png-240ac71fa725e77070ba052452b2e9d8.s3tc.ctex"
-path.etc2="res://.godot/imported/white_chest_0.png-240ac71fa725e77070ba052452b2e9d8.etc2.ctex"
+path.s3tc="res://.godot/imported/white_body_0.png-a9fb81585e340a949368990269b19c7b.s3tc.ctex"
+path.etc2="res://.godot/imported/white_body_0.png-a9fb81585e340a949368990269b19c7b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assests/textures/entities/white_chest_0.png"
-dest_files=["res://.godot/imported/white_chest_0.png-240ac71fa725e77070ba052452b2e9d8.s3tc.ctex", "res://.godot/imported/white_chest_0.png-240ac71fa725e77070ba052452b2e9d8.etc2.ctex"]
+source_file="res://assests/textures/entities/white_body_0.png"
+dest_files=["res://.godot/imported/white_body_0.png-a9fb81585e340a949368990269b19c7b.s3tc.ctex", "res://.godot/imported/white_body_0.png-a9fb81585e340a949368990269b19c7b.etc2.ctex"]
 
 [params]
 

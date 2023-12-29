@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cja8wk1vnwwj5"
-path="res://.godot/imported/crosshair.svg-3c03dbb4d9d140ae0bd5067aedb82438.ctex"
+uid="uid://depwk20yw5yeo"
+path="res://.godot/imported/grim_ear.png-126bc164080fc69cdcf7799387b2847e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/textures/ui/crosshair.svg"
-dest_files=["res://.godot/imported/crosshair.svg-3c03dbb4d9d140ae0bd5067aedb82438.ctex"]
+source_file="res://assests/krita/grim_ear.png"
+dest_files=["res://.godot/imported/grim_ear.png-126bc164080fc69cdcf7799387b2847e.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=3.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

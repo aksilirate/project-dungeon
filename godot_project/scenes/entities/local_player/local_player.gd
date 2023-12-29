@@ -1,4 +1,4 @@
-class_name LocalPlayer extends CharacterBody3D
+class_name LocalPlayer extends EntityBody
 
 
 @export var arms_animation_player: AnimationPlayer
@@ -11,9 +11,8 @@ class_name LocalPlayer extends CharacterBody3D
 @export var camera: Camera3D
 
 var look_sensitivity: float = 0.1
-var movement_speed: float = 4.5
 var bob_strength: float = 0.0
-
+var target: EntityBody = null
 
 
 
@@ -59,6 +58,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	process_camera_transform(delta)
+	process_view_raycast()
 	process_movement()
 	
 	process_crosshair()
@@ -83,6 +83,15 @@ func process_camera_transform(delta: float) -> void:
 	camera.rotation_degrees = camera_target.rotation_degrees
 	camera.rotation_degrees.y = rotation_degrees.y
 
+
+
+func process_view_raycast() -> void:
+	view_raycast.global_position = camera.global_position
+	if not is_instance_valid(target):
+		view_raycast.global_rotation = camera.global_rotation
+		return
+	
+	view_raycast.look_at(target.global_position + Vector3(0, 1.75, 0))
 
 
 

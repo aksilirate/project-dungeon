@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3hho37n31nkx"]
+[gd_scene load_steps=20 format=3 uid="uid://d3hho37n31nkx"]
 
+[ext_resource type="PackedScene" uid="uid://288efjnjfjl0" path="res://scenes/entities/entity_body/entity_body.tscn" id="1_fou0j"]
 [ext_resource type="Script" path="res://scenes/entities/local_player/local_player.gd" id="1_n7sfx"]
 [ext_resource type="PackedScene" uid="uid://bgh3a0toy3w8v" path="res://scenes/environment/parts/torch/torch.tscn" id="2_ks500"]
 [ext_resource type="PackedScene" uid="uid://begoxjsmmiks8" path="res://assests/models/human.glb" id="3_6fkav"]
@@ -8,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bpg0l3cvxoq6c" path="res://assests/textures/entities/white_skin.png" id="4_ut4n3"]
 [ext_resource type="Texture2D" uid="uid://cja8wk1vnwwj5" path="res://assests/textures/ui/crosshair.svg" id="7_r88i8"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5tus"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvwyd"]
 
 [sub_resource type="Animation" id="Animation_l7lwu"]
 length = 0.001
@@ -107,6 +108,23 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o5nmu"]
+resource_name = "bob"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.005, 0), Vector3(0, 0, 0), Vector3(0, -0.005, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7jjyd"]
@@ -312,23 +330,6 @@ tracks/1/keys = {
 "values": [Vector3(-1.32296, 5.38976e-07, -0.176278)]
 }
 
-[sub_resource type="Animation" id="Animation_o5nmu"]
-resource_name = "bob"
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.005, 0), Vector3(0, 0, 0), Vector3(0, -0.005, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0yckm"]
 _data = {
 "RESET": SubResource("Animation_l7lwu"),
@@ -338,23 +339,23 @@ _data = {
 "off_hand_idle": SubResource("Animation_hfbcn")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uxkx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g17yd"]
 albedo_texture = ExtResource("4_65ufo")
 texture_filter = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5d76"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3lt1"]
 diffuse_mode = 2
 albedo_texture = ExtResource("4_ut4n3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj5ba"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uqw7"]
 diffuse_mode = 2
 albedo_texture = ExtResource("4_ut4n3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyd6s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srhla"]
 diffuse_mode = 2
 albedo_texture = ExtResource("4_ut4n3")
 
-[node name="LocalPlayer" type="CharacterBody3D" node_paths=PackedStringArray("arms_animation_player", "crosshair_texture_rect", "right_arm_ik", "left_arm_ik", "camera_target", "view_raycast", "arms_offset", "camera")]
+[node name="LocalPlayer" node_paths=PackedStringArray("arms_animation_player", "crosshair_texture_rect", "right_arm_ik", "left_arm_ik", "camera_target", "view_raycast", "arms_offset", "camera") instance=ExtResource("1_fou0j")]
 script = ExtResource("1_n7sfx")
 arms_animation_player = NodePath("Camera3D/AnimationPlayer")
 crosshair_texture_rect = NodePath("CanvasLayer/CrosshairTextureRect")
@@ -365,47 +366,46 @@ view_raycast = NodePath("Camera3D/ViewRayCast")
 arms_offset = NodePath("Camera3D/ArmsOffset")
 camera = NodePath("Camera3D")
 
-[node name="CameraTarget" type="Marker3D" parent="."]
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_hvwyd")
+
+[node name="CameraTarget" type="Marker3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_o5tus")
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 top_level = true
 near = 0.001
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D" index="0"]
 root_node = NodePath("../ArmsOffset/Arms")
 libraries = {
 "": SubResource("AnimationLibrary_0yckm")
 }
 autoplay = "duel_wield_idle"
 
-[node name="ArmsOffset" type="Node3D" parent="Camera3D"]
+[node name="ArmsOffset" type="Node3D" parent="Camera3D" index="1"]
 
-[node name="Arms" type="Node3D" parent="Camera3D/ArmsOffset"]
+[node name="Arms" type="Node3D" parent="Camera3D/ArmsOffset" index="0"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
-[node name="OffHand" type="Node3D" parent="Camera3D/ArmsOffset/Arms"]
-transform = Transform3D(0.984503, 0.175366, 1.32215e-07, -0.0430186, 0.241506, 0.969445, 0.170008, -0.954422, 0.245307, -0.579331, -0.479456, -0.806183)
+[node name="OffHand" type="Node3D" parent="Camera3D/ArmsOffset/Arms" index="0"]
+transform = Transform3D(0.984503, 0.175366, 1.32215e-07, -0.0430186, 0.241505, 0.969445, 0.170008, -0.954422, 0.245307, -0.579331, -0.479456, -0.806183)
 
-[node name="Torch" parent="Camera3D/ArmsOffset/Arms/OffHand" instance=ExtResource("2_ks500")]
+[node name="Torch" parent="Camera3D/ArmsOffset/Arms/OffHand" index="0" instance=ExtResource("2_ks500")]
 transform = Transform3D(1, 0, 0, 0, 0.480224, -0.877146, 0, 0.877146, 0.480224, 0.025, 0.01, -0.05)
 visible = false
 
-[node name="MainHand" type="Node3D" parent="Camera3D/ArmsOffset/Arms"]
+[node name="MainHand" type="Node3D" parent="Camera3D/ArmsOffset/Arms" index="1"]
 transform = Transform3D(0.404505, 5.35696e-06, -0.914536, 0.873302, -0.296888, 0.386265, -0.271513, -0.954911, -0.120098, 0.122729, -0.499596, -0.813297)
 
-[node name="Sword" type="MeshInstance3D" parent="Camera3D/ArmsOffset/Arms/MainHand"]
+[node name="Sword" type="MeshInstance3D" parent="Camera3D/ArmsOffset/Arms/MainHand" index="0"]
 transform = Transform3D(-0.0440524, -0.958316, -0.282295, 0.0345326, 0.280937, -0.959104, 0.998433, -0.0519968, 0.020716, 0.321012, -0.0248046, 0.0179467)
 mesh = ExtResource("3_kt3op")
 skeleton = NodePath("../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8uxkx")
+surface_material_override/0 = SubResource("StandardMaterial3D_g17yd")
 
-[node name="human" parent="Camera3D/ArmsOffset/Arms" instance=ExtResource("3_6fkav")]
+[node name="human" parent="Camera3D/ArmsOffset/Arms" index="2" instance=ExtResource("3_6fkav")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.01057, -0.307382)
 
 [node name="Armature" parent="Camera3D/ArmsOffset/Arms/human" index="0"]
@@ -455,13 +455,13 @@ visible = false
 visible = false
 
 [node name="fist" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="4"]
-surface_material_override/0 = SubResource("StandardMaterial3D_q5d76")
+surface_material_override/0 = SubResource("StandardMaterial3D_d3lt1")
 
 [node name="head" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="5"]
 visible = false
 
 [node name="lower_arm" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="6"]
-surface_material_override/0 = SubResource("StandardMaterial3D_aj5ba")
+surface_material_override/0 = SubResource("StandardMaterial3D_1uqw7")
 
 [node name="lower_leg" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="7"]
 visible = false
@@ -473,37 +473,39 @@ visible = false
 visible = false
 
 [node name="upper_arm" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="10"]
-surface_material_override/0 = SubResource("StandardMaterial3D_vyd6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_srhla")
 
 [node name="upper_leg" parent="Camera3D/ArmsOffset/Arms/human/Armature/Skeleton3D" index="11"]
 visible = false
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" index="2"]
 light_color = Color(0.898039, 0.952941, 0.886275, 1)
 light_bake_mode = 0
 shadow_bias = 0.0
 omni_range = 10.0
 omni_attenuation = 0.5
 
-[node name="ViewRayCast" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -4)
+[node name="ViewRayCast" type="RayCast3D" parent="Camera3D" index="3"]
+top_level = true
+target_position = Vector3(0, 0, -2)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
 
-[node name="CrosshairTextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="CrosshairTextureRect" type="TextureRect" parent="CanvasLayer" index="0"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1.5
-offset_top = -1.5
-offset_right = 1.5
-offset_bottom = 1.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 texture = ExtResource("7_r88i8")
+expand_mode = 1
+stretch_mode = 5
 
 [editable path="Camera3D/ArmsOffset/Arms/human"]

@@ -11,7 +11,29 @@ class_name WorldProcessor extends Node
 
 
 func _physics_process(_delta: float) -> void:
+	process_local_player()
 	process_elevator()
+
+
+
+
+
+func process_local_player() -> void:
+	var center_pos: Vector2 = get_viewport().size / 2
+	
+	for local_player in node_manager.local_player_arr:
+		var closest_grim = null
+		 
+		for grim in node_manager.grim_arr:
+			if grim.global_position.distance_to(local_player.global_position) > 5:
+				continue
+			
+			if local_player.camera.is_position_behind(grim.global_position):
+				continue
+			
+			var distance: float = local_player.camera.unproject_position(grim.global_position).distance_to(center_pos)
+			if distance < 400:
+				local_player.target = grim
 
 
 

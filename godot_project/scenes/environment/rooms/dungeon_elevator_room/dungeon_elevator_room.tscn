@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfekc2ysx38wc"]
+[gd_scene load_steps=19 format=3 uid="uid://dfekc2ysx38wc"]
 
 [ext_resource type="Script" path="res://classes/nodes/room.gd" id="1_au1ng"]
 [ext_resource type="PackedScene" uid="uid://cmbuj4m4n30hh" path="res://scenes/environment/parts/dungeon_floor/dungeon_floor.tscn" id="3_2r384"]
@@ -7,15 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://usqstx158yjp" path="res://scenes/environment/parts/dungeon_elevator/dungeon_elevator.tscn" id="5_geifn"]
 [ext_resource type="PackedScene" uid="uid://begoxjsmmiks8" path="res://assests/models/human.glb" id="6_upve1"]
 [ext_resource type="Texture2D" uid="uid://ddfg5xp4n7qni" path="res://assests/textures/entities/white_head_0.png" id="7_1wplj"]
-[ext_resource type="Texture2D" uid="uid://4pm4ncu2v3u6" path="res://assests/textures/entities/white_chest_0.png" id="7_5hal2"]
 [ext_resource type="Texture2D" uid="uid://bpg0l3cvxoq6c" path="res://assests/textures/entities/white_skin.png" id="7_72i16"]
+[ext_resource type="Texture2D" uid="uid://4pm4ncu2v3u6" path="res://assests/textures/entities/white_body_0.png" id="7_bnlne"]
 [ext_resource type="PackedScene" uid="uid://bgh3a0toy3w8v" path="res://scenes/environment/parts/torch/torch.tscn" id="8_mr6km"]
 [ext_resource type="Texture2D" uid="uid://dv4xnfl5pb7k1" path="res://assests/textures/entities/underwear.png" id="9_8noqm"]
 [ext_resource type="Texture2D" uid="uid://1f3agrnbyvm3" path="res://assests/textures/entities/white_root_0.png" id="10_2l3jp"]
+[ext_resource type="PackedScene" uid="uid://c53srot74hxrq" path="res://scenes/entities/grim_lvl_1/grim_lvl_1.tscn" id="13_ser27"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8124"]
 diffuse_mode = 2
-albedo_texture = ExtResource("7_5hal2")
+albedo_texture = ExtResource("7_bnlne")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ue7x"]
@@ -291,5 +292,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 
 [node name="Torch" parent="." instance=ExtResource("8_mr6km")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73031, 1.60063, -3.1206)
+
+[node name="GrimLvl1" parent="." instance=ExtResource("13_ser27")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 1.21895, 0, -4.90202)
 
 [editable path="human"]
