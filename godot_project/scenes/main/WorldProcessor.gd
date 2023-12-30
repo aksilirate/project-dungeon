@@ -11,16 +11,14 @@ class_name WorldProcessor extends Node
 
 
 func _physics_process(_delta: float) -> void:
-	process_local_player()
+	process_local_player_target()
 	process_elevator()
 
 
 
 
 
-func process_local_player() -> void:
-	var center_pos: Vector2 = get_viewport().size / 2
-	
+func process_local_player_target() -> void:
 	for local_player in node_manager.local_player_arr:
 		var closest_grim = null
 		 
@@ -28,19 +26,44 @@ func process_local_player() -> void:
 			if grim.global_position.distance_to(local_player.global_position) > 5:
 				continue
 			
-			if local_player.camera.is_position_behind(grim.global_position):
-				continue
-			
-			var grim_pos = grim.global_position
-			if local_player.view_raycast.get_collider() == grim:
-				grim_pos = local_player.view_raycast.get_collision_point()
-			
-			var distance: float = local_player.camera.unproject_position(grim.global_position).distance_to(center_pos)
-			if distance < 500:
-				closest_grim = grim
+			var grim_distance: float = get_view_distance(local_player, grim)
+			if grim_distance > -1 and grim_distance < 450:
+				if not is_instance_valid(closest_grim):
+					closest_grim = grim
+					continue
+				
+				var closest_grim_distance: float = get_view_distance(local_player, closest_grim)
+				if closest_grim_distance >= grim_distance:
+					closest_grim = grim
+		
 		
 		local_player.target = closest_grim
 
+
+
+
+func get_view_distance(local_player: LocalPlayer, grim: Grim) -> float:
+	var distance: float = local_player.global_position.distance_to(grim.global_position)
+	var center_pos: Vector2 = get_viewport().size / 2
+	
+	if local_player.camera.is_position_behind(grim.global_position):
+		return -1
+	
+	if distance > 2.0:
+		return -1
+	
+	var space_state = local_player.get_world_3d().direct_space_state
+	var physics_state = PhysicsRayQueryParameters3D.create(
+		local_player.camera.global_position,
+		grim.global_position + Vector3(0, 1.5, 0),
+		0xFFFFFFFF,
+		[local_player.get_rid()]
+		)
+	
+	var result = space_state.intersect_ray(physics_state)
+	
+	var view_distance: Vector2 = local_player.camera.unproject_position(result["position"]) - center_pos
+	return abs(view_distance.x) + (abs(view_distance.y) * 1.45)
 
 
 
