@@ -56,8 +56,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	input_dir = get_input_dir()
-	
-	process_movement()
 	process_camera_transform(delta)
 	process_crosshair()
 

@@ -1,9 +1,4 @@
-class_name WorldProcessor extends Node
-
-
-@export var method_processor: MethodProcessor
-@export var node_manager: NodeManager
-
+class_name WorldProcessor extends Processor
 
 
 

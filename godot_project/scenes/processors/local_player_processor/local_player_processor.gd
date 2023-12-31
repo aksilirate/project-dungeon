@@ -1,11 +1,4 @@
-extends Node
-
-@export var method_processor: MethodProcessor
-@export var node_manager: NodeManager
-
-
-
-
+class_name LocalPlayerProcessor extends Processor
 
 
 

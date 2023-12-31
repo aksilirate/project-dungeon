@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3gkrp8gigsvb"]
+[gd_scene load_steps=9 format=3 uid="uid://d3gkrp8gigsvb"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_o7st6"]
 [ext_resource type="Script" path="res://scenes/main/MethodProcessor.gd" id="2_iebi3"]
 [ext_resource type="PackedScene" uid="uid://dfjp4afs4djbw" path="res://scenes/processors/world_processor/world_processor.tscn" id="4_jdx15"]
 [ext_resource type="PackedScene" uid="uid://c7wyq06vbsi3u" path="res://scenes/world/world_viewport_container/world_viewport_container.tscn" id="4_rcd0c"]
 [ext_resource type="PackedScene" uid="uid://b6c0n3ra2c8k6" path="res://scenes/processors/local_player_processor/local_player_processor.tscn" id="5_gdgj2"]
+[ext_resource type="PackedScene" uid="uid://d1ghvlsnta4fx" path="res://scenes/processors/entity_body_processor/entity_body_processor.tscn" id="5_slq13"]
 [ext_resource type="PackedScene" uid="uid://d1jif5y78a86j" path="res://scenes/processors/yot_processor/yot_processor.tscn" id="6_esi0i"]
 [ext_resource type="Script" path="res://scenes/main/node_manager.gd" id="8_cnn1u"]
 
@@ -15,20 +16,22 @@ node_manager = NodePath("NodeManager")
 [node name="MethodProcessor" type="Node" parent="."]
 script = ExtResource("2_iebi3")
 
-[node name="NodeManager" type="Node" parent="."]
+[node name="NodeManager" type="Node" parent="." node_paths=PackedStringArray("method_processor")]
 script = ExtResource("8_cnn1u")
-
-[node name="WorldProcessor" parent="." node_paths=PackedStringArray("method_processor", "node_manager") instance=ExtResource("4_jdx15")]
 method_processor = NodePath("../MethodProcessor")
-node_manager = NodePath("../NodeManager")
 
-[node name="LocalPlayerProcessor" parent="WorldProcessor" node_paths=PackedStringArray("method_processor", "node_manager") instance=ExtResource("5_gdgj2")]
-method_processor = NodePath("../../MethodProcessor")
-node_manager = NodePath("../../NodeManager")
+[node name="WorldProcessor" parent="." instance=ExtResource("4_jdx15")]
 
-[node name="YotProcessor" parent="WorldProcessor" node_paths=PackedStringArray("method_processor", "node_manager") instance=ExtResource("6_esi0i")]
-method_processor = NodePath("../../MethodProcessor")
-node_manager = NodePath("../../NodeManager")
+[node name="EntityBodyProcessor" parent="WorldProcessor" instance=ExtResource("5_slq13")]
+
+[node name="LocalPlayerProcessor" parent="WorldProcessor" instance=ExtResource("5_gdgj2")]
+method_processor = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("2_iebi3"))
+
+node_manager = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("8_cnn1u"),"method_processor":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("2_iebi3"))
+)
+
+
+[node name="YotProcessor" parent="WorldProcessor" instance=ExtResource("6_esi0i")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

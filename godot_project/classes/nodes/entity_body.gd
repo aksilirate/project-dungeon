@@ -9,8 +9,6 @@ var input_dir: Vector3
 
 
 
-
-
 func process_movement() -> void:
 	velocity = get_move_force()
 	velocity = get_gravity()
