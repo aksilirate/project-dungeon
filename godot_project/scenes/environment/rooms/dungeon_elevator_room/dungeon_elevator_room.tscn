@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bgh3a0toy3w8v" path="res://scenes/environment/parts/torch/torch.tscn" id="8_mr6km"]
 [ext_resource type="Texture2D" uid="uid://dv4xnfl5pb7k1" path="res://assests/textures/entities/underwear.png" id="9_8noqm"]
 [ext_resource type="Texture2D" uid="uid://1f3agrnbyvm3" path="res://assests/textures/entities/white_root_0.png" id="10_2l3jp"]
-[ext_resource type="PackedScene" uid="uid://c53srot74hxrq" path="res://scenes/entities/grim_lvl_1/grim_lvl_1.tscn" id="13_ser27"]
+[ext_resource type="PackedScene" uid="uid://c53srot74hxrq" path="res://scenes/entities/normal_yot/normal_yot.tscn" id="13_0hh7d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8124"]
 diffuse_mode = 2
@@ -293,10 +293,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4ue7x")
 [node name="Torch" parent="." instance=ExtResource("8_mr6km")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73031, 1.60063, -3.1206)
 
-[node name="GrimLvl1" parent="." instance=ExtResource("13_ser27")]
+[node name="GrimLvl1" parent="." instance=ExtResource("13_0hh7d")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 1.21895, 0, -4.90202)
 
-[node name="GrimLvl2" parent="." instance=ExtResource("13_ser27")]
+[node name="GrimLvl2" parent="." instance=ExtResource("13_0hh7d")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 1.21895, 0, -6.90202)
 
 [editable path="human"]

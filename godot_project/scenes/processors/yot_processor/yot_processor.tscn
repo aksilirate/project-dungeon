@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1jif5y78a86j"]
+
+[ext_resource type="Script" path="res://scenes/processors/yot_processor/yot_processor.gd" id="1_61is7"]
+
+[node name="YotProcessor" type="Node"]
+script = ExtResource("1_61is7")

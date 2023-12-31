@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfjp4afs4djbw"]
+
+[ext_resource type="Script" path="res://scenes/processors/world_processor/world_processor.gd" id="1_6a4uc"]
+
+[node name="WorldProcessor" type="Node"]
+script = ExtResource("1_6a4uc")

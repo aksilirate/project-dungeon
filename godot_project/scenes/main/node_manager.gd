@@ -6,7 +6,7 @@ var world_viewport_container_arr: Array[WorldViewportContainer] = []
 var dungeon_generator_arr: Array[DungeonGenerator] = []
 var dungeon_elevator_arr: Array[DungeonElevator] = []
 var local_player_arr: Array[LocalPlayer] = []
-var grim_arr: Array[Grim] = []
+var yot_arr: Array[Yot] = []
 
 
 
@@ -31,8 +31,8 @@ func process_new_child(child: Node) -> void:
 		add_to_array(child, local_player_arr)
 		return
 	
-	if child is Grim:
-		add_to_array(child, grim_arr)
+	if child is Yot:
+		add_to_array(child, yot_arr)
 		return
 
 

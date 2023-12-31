@@ -14,6 +14,7 @@ var spawned_rooms: Array[Room] = []
 var room_aabbs: Array[AABB] = []
 var spawned_elevator_room: bool
 
+
 var rand := RandomNumberGenerator.new()
 
 
@@ -34,10 +35,11 @@ func _ready() -> void:
 
 
 
+
 func generate() -> void:
 	spawned_elevator_room = false
 	used_door_markers.clear()
-	spawned_rooms.clear()
+	
 	room_aabbs.clear()
 	
 	rand.randomize()
@@ -47,21 +49,28 @@ func generate() -> void:
 		remove_child(child)
 		child.queue_free()
 	
-	setup_spawn()
+	spawned_rooms.clear()
+	
+	var spawn_room: SpawnRoom = setup_spawn()
 	generate_rooms()
+	
+	spawn_local_player(spawn_room.spawn_marker.global_position)
 
 
-func setup_spawn() -> void:
-	var spawn_room: SpawnRoom = spawn_room_scene.instantiate()
+
+
+func spawn_local_player(spawn_pos: Vector3) -> void:
 	var local_player: LocalPlayer = preload("res://scenes/entities/local_player/local_player.tscn").instantiate()
+	add_child(local_player)
+	local_player.global_position = spawn_pos
+
+
+func setup_spawn() -> SpawnRoom:
+	var spawn_room: SpawnRoom = spawn_room_scene.instantiate()
 	add_child(spawn_room)
 	save_room(spawn_room)
 	
-	
-	add_child(local_player)
-	
-	local_player.global_position = spawn_room.spawn_marker.global_position
-
+	return spawn_room
 
 
 

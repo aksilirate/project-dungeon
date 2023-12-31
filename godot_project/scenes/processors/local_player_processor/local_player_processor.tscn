@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6c0n3ra2c8k6"]
+
+[ext_resource type="Script" path="res://scenes/processors/local_player_processor/local_player_processor.gd" id="1_t5v0h"]
+
+[node name="LocalPlayerProcessor" type="Node"]
+script = ExtResource("1_t5v0h")
